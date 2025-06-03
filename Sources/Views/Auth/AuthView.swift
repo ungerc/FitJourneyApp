@@ -3,6 +3,7 @@ import AppCore
 
 struct AuthView: View {
     @State private var isSignIn = true
+    @State private var showConfetti = false
     @Environment(AuthViewModel.self) private var authViewModel
     
     var body: some View {
@@ -44,6 +45,20 @@ struct AuthView: View {
                 set: { _ in authViewModel.errorMessage = nil }
             )) { alert in
                 Alert(title: Text("Error"), message: Text(alert.message), dismissButton: .default(Text("OK")))
+            }
+            .onChange(of: authViewModel.isNotAuthenticated) { oldValue, newValue in
+                if oldValue == true && newValue == false {
+                    // User just logged in successfully
+                    showConfetti = true
+                    
+                    // Hide confetti after a delay
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        showConfetti = false
+                    }
+                }
+            }
+            .overlay {
+                ConfettiView(isShowing: $showConfetti)
             }
         }
     }
