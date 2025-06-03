@@ -1,9 +1,9 @@
 import SwiftUI
-import FitnessTracker
+import struct AppCore.AppWorkout
 
 struct WorkoutDetailView: View {
-    let workout: Workout
-    
+    let workout: AppWorkout
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
@@ -122,7 +122,7 @@ struct WorkoutDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             WorkoutDetailView(
-                workout: Workout(
+                workout: AppWorkout(
                     id: "1",
                     name: "Morning Run",
                     duration: 1800,

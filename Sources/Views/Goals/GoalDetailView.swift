@@ -1,11 +1,12 @@
 import SwiftUI
+import AppCore
 
 struct GoalDetailView: View {
-    let goal: Goal
+    let goal: AppGoal
     @State private var updatedValue: Double
     @Environment(GoalViewModel.self) private var goalViewModel
 
-    init(goal: Goal) {
+    init(goal: AppGoal) {
         self.goal = goal
         self._updatedValue = State(initialValue: goal.currentValue)
     }
@@ -138,25 +139,25 @@ struct GoalDetailView: View {
     }
 }
 
-struct GoalDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        let networkManager = NetworkManager()
-        let authManager = AuthManager(networkManager: networkManager)
-        let goalService = GoalService(networkManager: networkManager, authManager: authManager)
-        
-        NavigationView {
-            GoalDetailView(
-                goal: Goal(
-                    id: "1",
-                    name: "Lose Weight",
-                    targetValue: 10.0,
-                    currentValue: 3.5,
-                    unit: "kg",
-                    deadline: Calendar.current.date(byAdding: .month, value: 2, to: Date()),
-                    type: .weight
-                )
-            )
-            .environmentObject(GoalViewModel(goalService: goalService))
-        }
-    }
-}
+//struct GoalDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let networkManager = NetworkManager()
+//        let authManager = AuthManager(networkManager: networkManager)
+//        let goalService = GoalService(networkManager: networkManager, authManager: authManager)
+//        
+//        NavigationView {
+//            GoalDetailView(
+//                goal: Goal(
+//                    id: "1",
+//                    name: "Lose Weight",
+//                    targetValue: 10.0,
+//                    currentValue: 3.5,
+//                    unit: "kg",
+//                    deadline: Calendar.current.date(byAdding: .month, value: 2, to: Date()),
+//                    type: .weight
+//                )
+//            )
+//            .environmentObject(GoalViewModel(goalService: goalService))
+//        }
+//    }
+//}

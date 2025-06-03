@@ -72,12 +72,12 @@ struct ProfileView: View {
     }
 }
 
-struct ProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        let networkManager = NetworkManager()
-        let authManager = AuthManager(networkManager: networkManager)
-        
-        ProfileView()
-            .environmentObject(AuthViewModel(authManager: authManager))
-    }
-}
+//struct ProfileView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let networkManager = NetworkManager()
+//        let authManager = AuthManager(networkManager: networkManager)
+//        
+//        ProfileView()
+//            .environmentObject(AuthViewModel(authManager: authManager))
+//    }
+//}

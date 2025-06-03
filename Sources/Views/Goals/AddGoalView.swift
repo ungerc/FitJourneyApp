@@ -1,11 +1,12 @@
 import SwiftUI
+import AppCore
 
 struct AddGoalView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(GoalViewModel.self) private var goalViewModel
 
     @State private var name = ""
-    @State private var goalType = GoalType.workouts
+    @State private var goalType = AppGoalType.workouts
     @State private var targetValue = 10.0
     @State private var unit = "workouts"
     @State private var hasDeadline = false
@@ -70,7 +71,7 @@ struct AddGoalView: View {
         }
     }
     
-    private func updateUnitForType(_ type: GoalType) {
+    private func updateUnitForType(_ type: AppGoalType) {
         switch type {
         case .weight:
             unit = "kg"
@@ -130,30 +131,35 @@ struct AddGoalView: View {
     }
     
     private func saveGoal() {
-        let newGoal = Goal(
-            id: UUID().uuidString,
-            name: name,
-            targetValue: targetValue,
-            currentValue: 0,
-            unit: unit,
-            deadline: hasDeadline ? deadline : nil,
-            type: goalType
-        )
+//        let newGoal = Goal(
+//            id: UUID().uuidString,
+//            name: name,
+//            targetValue: targetValue,
+//            currentValue: 0,
+//            unit: unit,
+//            deadline: hasDeadline ? deadline : nil,
+//            type: goalType
+//        )
         
         Task {
-            await goalViewModel.addGoal(newGoal)
+            await goalViewModel.addGoal(name: name,
+                                        type: goalType,
+                                        targetValue: targetValue,
+                                        currentValue: 0,
+                                        unit: unit,
+                                        deadline: hasDeadline ? deadline : nil)
             dismiss()
         }
     }
 }
 
-struct AddGoalView_Previews: PreviewProvider {
-    static var previews: some View {
-        let networkManager = NetworkManager()
-        let authManager = AuthManager(networkManager: networkManager)
-        let goalService = GoalService(networkManager: networkManager, authManager: authManager)
-        
-        AddGoalView()
-            .environmentObject(GoalViewModel(goalService: goalService))
-    }
-}
+//struct AddGoalView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let networkManager = NetworkManager()
+//        let authManager = AuthManager(networkManager: networkManager)
+//        let goalService = GoalService(networkManager: networkManager, authManager: authManager)
+//        
+//        AddGoalView()
+//            .environmentObject(GoalViewModel(goalService: goalService))
+//    }
+//}

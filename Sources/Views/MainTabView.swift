@@ -1,62 +1,39 @@
 import SwiftUI
 import AppCore
 
+// Main tab view for the authenticated user
 struct MainTabView: View {
-    @Environment(AuthViewModel.self) private var authViewModel
+    @Environment(WorkoutViewModel.self) private var workoutViewModel
+    @Environment(GoalViewModel.self) private var goalViewModel
 
-    var workoutViewModel: WorkoutViewModel
-    var goalViewModel: GoalViewModel
-
-    init(workoutViewModel: WorkoutViewModel, goalViewModel: GoalViewModel) {
-        self.workoutViewModel = workoutViewModel
-        self.goalViewModel = goalViewModel
-    }
-    
     var body: some View {
-        @Bindable var authViewModel = authViewModel
         TabView {
-            Text("Dashboard")
-                .environment(workoutViewModel)
-                .environment(goalViewModel)
+            DashboardView()
                 .tabItem {
                     Label("Dashboard", systemImage: "chart.bar")
                 }
-            
-            Text("Workouts")
-                .environment(workoutViewModel)
+
+            WorkoutsView()
                 .tabItem {
                     Label("Workouts", systemImage: "figure.run")
                 }
-            
-            Text("Goals")
-                .environment(goalViewModel)
+
+            GoalsView()
                 .tabItem {
                     Label("Goals", systemImage: "target")
                 }
-            
-            Text("Profile")
+
+            ProfileView()
                 .tabItem {
                     Label("Profile", systemImage: "person")
                 }
         }
-        .fullScreenCover(isPresented: $authViewModel.needsAuthentication) {
-            AuthView()
-                .environment(authViewModel)
-        }
-        .task {
-            async let workouts = workoutViewModel.fetchWorkouts
-            async let goals = goalViewModel.fetchGoals
-            _ = await (workouts, goals)
+        .onAppear {
+            // Load data when tab view appears
+            Task {
+                await workoutViewModel.fetchWorkouts()
+                await goalViewModel.fetchGoals()
+            }
         }
     }
-}
-
-#Preview {
-    let serviceProvider = ServiceProvider()
-    
-    return MainTabView(
-        workoutViewModel: WorkoutViewModel(workoutAdapter: serviceProvider.workoutAdapter),
-        goalViewModel: GoalViewModel(goalAdapter: serviceProvider.goalAdapter)
-    )
-    .environment(AuthViewModel(authAdapter: serviceProvider.authAdapter))
 }

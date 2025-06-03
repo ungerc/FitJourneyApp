@@ -1,4 +1,5 @@
 import SwiftUI
+import struct AppCore.AppGoal
 
 struct GoalsView: View {
     @Environment(GoalViewModel.self) private var goalViewModel
@@ -44,7 +45,7 @@ struct GoalsView: View {
             }
             .sheet(isPresented: $showingAddGoal) {
                 AddGoalView()
-                    .environmentObject(goalViewModel)
+                    .environment(goalViewModel)
             }
             .refreshable {
                 await goalViewModel.fetchGoals()
@@ -60,8 +61,8 @@ struct GoalsView: View {
 }
 
 struct GoalRow: View {
-    let goal: Goal
-    
+    let goal: AppGoal
+
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
@@ -115,7 +116,7 @@ struct GoalRow: View {
 }
 
 struct GoalProgressCard: View {
-    let goal: Goal
+    let goal: AppGoal
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -173,13 +174,13 @@ struct GoalProgressCard: View {
     }
 }
 
-struct GoalsView_Previews: PreviewProvider {
-    static var previews: some View {
-        let networkManager = NetworkManager()
-        let authManager = AuthManager(networkManager: networkManager)
-        let goalService = GoalService(networkManager: networkManager, authManager: authManager)
-        
-        GoalsView()
-            .environmentObject(GoalViewModel(goalService: goalService))
-    }
-}
+//struct GoalsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let networkManager = NetworkManager()
+//        let authManager = AuthManager(networkManager: networkManager)
+//        let goalService = GoalService(networkManager: networkManager, authManager: authManager)
+//        
+//        GoalsView()
+//            .environmentObject(GoalViewModel(goalService: goalService))
+//    }
+//}

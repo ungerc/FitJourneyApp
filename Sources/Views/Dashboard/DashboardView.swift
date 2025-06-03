@@ -133,15 +133,15 @@ struct EmptyStateView: View {
     }
 }
 
-struct DashboardView_Previews: PreviewProvider {
-    static var previews: some View {
-        let networkManager = NetworkManager()
-        let authManager = AuthManager(networkManager: networkManager)
-        let workoutService = WorkoutService(networkManager: networkManager, authManager: authManager)
-        let goalService = GoalService(networkManager: networkManager, authManager: authManager)
-        
-        DashboardView()
-            .environmentObject(WorkoutViewModel(workoutService: workoutService))
-            .environmentObject(GoalViewModel(goalService: goalService))
-    }
-}
+//struct DashboardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let networkManager = NetworkManager()
+//        let authManager = AuthManager(networkManager: networkManager)
+//        let workoutService = WorkoutService(networkManager: networkManager, authManager: authManager)
+//        let goalService = GoalService(networkManager: networkManager, authManager: authManager)
+//        
+//        DashboardView()
+//            .environmentObject(WorkoutViewModel(workoutService: workoutService))
+//            .environmentObject(GoalViewModel(goalService: goalService))
+//    }
+//}

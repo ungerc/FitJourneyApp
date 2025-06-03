@@ -54,9 +54,9 @@ struct AuthAlert: Identifiable {
     let message: String
 }
 
-#Preview {
-    let serviceProvider = ServiceProvider()
-    
-    return AuthView()
-        .environment(AuthViewModel(authAdapter: serviceProvider.authAdapter))
-}
+//#Preview {
+//    let serviceProvider = ServiceProvider()
+//    
+//    return AuthView()
+//        .environment(AuthViewModel(authAdapter: serviceProvider.authAdapter))
+//}

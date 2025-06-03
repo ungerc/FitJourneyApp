@@ -1,5 +1,5 @@
 import SwiftUI
-import FitnessTracker
+import struct AppCore.AppWorkout
 
 struct WorkoutsView: View {
     @Environment(WorkoutViewModel.self ) private var workoutViewModel
@@ -33,7 +33,7 @@ struct WorkoutsView: View {
             }
             .sheet(isPresented: $showingAddWorkout) {
                 AddWorkoutView()
-                    .environmentObject(workoutViewModel)
+                    .environment(workoutViewModel)
             }
             .refreshable {
                 await workoutViewModel.fetchWorkouts()
@@ -49,8 +49,8 @@ struct WorkoutsView: View {
 }
 
 struct WorkoutRow: View {
-    let workout: Workout
-    
+    let workout: AppWorkout
+
     var body: some View {
         HStack(spacing: 15) {
             Image(systemName: workout.type.icon)
@@ -97,8 +97,8 @@ struct WorkoutRow: View {
 }
 
 struct WorkoutCard: View {
-    let workout: Workout
-    
+    let workout: AppWorkout
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
@@ -161,13 +161,13 @@ struct WorkoutCard: View {
     }
 }
 
-struct WorkoutsView_Previews: PreviewProvider {
-    static var previews: some View {
-        let networkManager = NetworkManager()
-        let authManager = AuthManager(networkManager: networkManager)
-        let workoutService = WorkoutService(networkManager: networkManager, authManager: authManager)
-        
-        WorkoutsView()
-            .environmentObject(WorkoutViewModel(workoutService: workoutService))
-    }
-}
+//struct WorkoutsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let networkManager = NetworkManager()
+//        let authManager = AuthManager(networkManager: networkManager)
+//        let workoutService = WorkoutService(networkManager: networkManager, authManager: authManager)
+//        
+//        WorkoutsView()
+//            .environmentObject(WorkoutViewModel(workoutService: workoutService))
+//    }
+//}
