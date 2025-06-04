@@ -28,7 +28,11 @@ class WorkoutViewModel {
         isLoading = false
     }
 
-    func addWorkout(name: String, type: AppWorkoutType, duration: TimeInterval, caloriesBurned: Double, date: Date) async {
+    func addWorkout(name: String,
+                    type: AppWorkoutType,
+                    duration: TimeInterval,
+                    caloriesBurned: Double,
+                    date: Date) async {
 
         isLoading = true
         errorMessage = nil

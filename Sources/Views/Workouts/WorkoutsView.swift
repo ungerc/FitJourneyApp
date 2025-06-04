@@ -2,7 +2,7 @@ import SwiftUI
 import struct AppCore.AppWorkout
 
 struct WorkoutsView: View {
-    @Environment(WorkoutViewModel.self ) private var workoutViewModel
+    @Environment(WorkoutViewModel.self) private var workoutViewModel
     @State private var showingAddWorkout = false
     
     var body: some View {

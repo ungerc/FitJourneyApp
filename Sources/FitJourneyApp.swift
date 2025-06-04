@@ -31,14 +31,13 @@ struct FitJourneyApp: App {
 // Main content view that handles authentication state
 struct ContentView: View {
     @Environment(AuthViewModel.self) private var authViewModel
-    
+
     var body: some View {
+        @Bindable var model = authViewModel
         Group {
-            if authViewModel.isAuthenticated {
-                MainTabView()
-            } else {
-                AuthView()
-            }
+            MainTabView()
+                .fullScreenCover(isPresented: $model.isNotAuthenticated) {
+                    AuthView() }
         }
     }
 }

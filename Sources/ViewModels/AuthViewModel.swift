@@ -7,14 +7,14 @@ import AppCore
 class AuthViewModel {
     private let authAdapter: ApplicationAuthAdapter
 
-    var isAuthenticated: Bool = false
+    var isNotAuthenticated: Bool = true
     var currentUser: AppUser?
     var errorMessage: String?
     var isLoading: Bool = false
 
     init(authAdapter: ApplicationAuthAdapter) {
         self.authAdapter = authAdapter
-        self.isAuthenticated = authAdapter.isAuthenticated
+        self.isNotAuthenticated = !authAdapter.isAuthenticated
         self.currentUser = authAdapter.currentUser
     }
 
@@ -24,7 +24,7 @@ class AuthViewModel {
 
         do {
             currentUser = try await authAdapter.signIn(email: email, password: password)
-            isAuthenticated = true
+            isNotAuthenticated = false
         } catch {
             errorMessage = "Failed to sign in: \(error.localizedDescription)"
         }
@@ -38,7 +38,7 @@ class AuthViewModel {
 
         do {
             currentUser = try await authAdapter.signUp(email: email, password: password, name: name)
-            isAuthenticated = true
+            isNotAuthenticated = false
         } catch {
             errorMessage = "Failed to sign up: \(error.localizedDescription)"
         }
@@ -49,7 +49,7 @@ class AuthViewModel {
     func signOut() {
         do {
             try authAdapter.signOut()
-            isAuthenticated = false
+            isNotAuthenticated = true
             currentUser = nil
         } catch {
             errorMessage = "Failed to sign out: \(error.localizedDescription)"
