@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1A2B3C4D5E6F7890ABCDEF01 /* FitJourneyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7890ABCDEF02 /* FitJourneyApp.swift */; };
 		AA15B6A82DEF5350002F7E9C /* AppCore in Frameworks */ = {isa = PBXBuildFile; productRef = AA15B6A72DEF5350002F7E9C /* AppCore */; };
-		AA15B6A92DEF5674002F7E9C /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6C6E400DEE22B800123FBD /* AuthViewModel.swift */; };
 		AA15B6B62DEF57AD002F7E9C /* AddWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA15B6B22DEF57AD002F7E9C /* AddWorkoutView.swift */; };
 		AA15B6B72DEF57AD002F7E9C /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA15B6AA2DEF57AD002F7E9C /* DashboardView.swift */; };
 		AA15B6B82DEF57AD002F7E9C /* GoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA15B6AE2DEF57AD002F7E9C /* GoalsView.swift */; };
@@ -19,21 +18,18 @@
 		AA15B6BC2DEF57AD002F7E9C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA15B6B02DEF57AD002F7E9C /* ProfileView.swift */; };
 		AA15B6BD2DEF57AD002F7E9C /* WorkoutDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA15B6B32DEF57AD002F7E9C /* WorkoutDetailView.swift */; };
 		AA15B6C02DEF8075002F7E9C /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA15B6BE2DEF8075002F7E9C /* ConfettiView.swift */; };
-		AA6C6E392DEE291900123FBD /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6C6E372DEE291900123FBD /* SignInView.swift */; };
-		AA6C6E3A2DEE291900123FBD /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6C6E382DEE291900123FBD /* SignUpView.swift */; };
 		AA6C6E3F2DEE22B800123FBD /* (null) in Sources */ = {isa = PBXBuildFile; };
 		AA6C6E412DEE22B800123FBD /* WorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6C6E422DEE22B800123FBD /* WorkoutViewModel.swift */; };
 		AA6C6E432DEE22B800123FBD /* GoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6C6E442DEE22B800123FBD /* GoalViewModel.swift */; };
 		AA6C6E452DEE22B800123FBD /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6C6E462DEE22B800123FBD /* MainTabView.swift */; };
-		AA6C6E472DEE22B800123FBD /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6C6E482DEE22B800123FBD /* AuthView.swift */; };
 		AA6C6E492DEE22B800123FBD /* AppCore in Frameworks */ = {isa = PBXBuildFile; productRef = AA6C6E492DEE22B800123FBE /* AppCore */; };
 		AABA0DCB2DEF4D2B002FB75F /* AppCore in Frameworks */ = {isa = PBXBuildFile; productRef = AABA0DCA2DEF4D2B002FB75F /* AppCore */; };
+		AAEC60AB2DF3A3F80004ACF7 /* AuthStateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC60AA2DF3A3F80004ACF7 /* AuthStateObserver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1A2B3C4D5E6F7890ABCDEF00 /* FitJourneyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitJourneyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A2B3C4D5E6F7890ABCDEF02 /* FitJourneyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitJourneyApp.swift; sourceTree = "<group>"; };
-		1A2B3C4D5E6F7890ABCDEF33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA15B6AA2DEF57AD002F7E9C /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		AA15B6AC2DEF57AD002F7E9C /* AddGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGoalView.swift; sourceTree = "<group>"; };
 		AA15B6AD2DEF57AD002F7E9C /* GoalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailView.swift; sourceTree = "<group>"; };
@@ -43,13 +39,10 @@
 		AA15B6B32DEF57AD002F7E9C /* WorkoutDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailView.swift; sourceTree = "<group>"; };
 		AA15B6B42DEF57AD002F7E9C /* WorkoutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsView.swift; sourceTree = "<group>"; };
 		AA15B6BE2DEF8075002F7E9C /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
-		AA6C6E372DEE291900123FBD /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		AA6C6E382DEE291900123FBD /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
-		AA6C6E400DEE22B800123FBD /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		AA6C6E422DEE22B800123FBD /* WorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewModel.swift; sourceTree = "<group>"; };
 		AA6C6E442DEE22B800123FBD /* GoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewModel.swift; sourceTree = "<group>"; };
 		AA6C6E462DEE22B800123FBD /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
-		AA6C6E482DEE22B800123FBD /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		AAEC60AA2DF3A3F80004ACF7 /* AuthStateObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStateObserver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +73,6 @@
 				AA6C6E4A2DEE22B800123FBD /* ViewModels */,
 				AA6C6E4B2DEE22B800123FBD /* Views */,
 				1A2B3C4D5E6F7890ABCDEF02 /* FitJourneyApp.swift */,
-				1A2B3C4D5E6F7890ABCDEF33 /* Info.plist */,
 			);
 			name = FitJourneyApp;
 			path = Sources;
@@ -149,19 +141,18 @@
 		AA6C6E4A2DEE22B800123FBD /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				AA6C6E400DEE22B800123FBD /* AuthViewModel.swift */,
+				AAEC60AA2DF3A3F80004ACF7 /* AuthStateObserver.swift */,
 				AA6C6E422DEE22B800123FBD /* WorkoutViewModel.swift */,
 				AA6C6E442DEE22B800123FBD /* GoalViewModel.swift */,
 			);
 			name = ViewModels;
-			path = /Users/christian/Development/POC/FitJourneyApp/Sources/ViewModels;
-			sourceTree = "<absolute>";
+			path = Sources/ViewModels;
+			sourceTree = SOURCE_ROOT;
 		};
 		AA6C6E4B2DEE22B800123FBD /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				AA15B6BF2DEF8075002F7E9C /* Shared */,
-				AA6C6E4D2DEE22B800123FBD /* Auth */,
 				AA15B6AB2DEF57AD002F7E9C /* Dashboard */,
 				AA15B6AF2DEF57AD002F7E9C /* Goals */,
 				AA15B6B12DEF57AD002F7E9C /* Profile */,
@@ -169,16 +160,6 @@
 				AA6C6E462DEE22B800123FBD /* MainTabView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		AA6C6E4D2DEE22B800123FBD /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				AA6C6E372DEE291900123FBD /* SignInView.swift */,
-				AA6C6E382DEE291900123FBD /* SignUpView.swift */,
-				AA6C6E482DEE22B800123FBD /* AuthView.swift */,
-			);
-			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,18 +244,15 @@
 				AA15B6B92DEF57AD002F7E9C /* WorkoutsView.swift in Sources */,
 				AA15B6BA2DEF57AD002F7E9C /* AddGoalView.swift in Sources */,
 				AA15B6BB2DEF57AD002F7E9C /* GoalDetailView.swift in Sources */,
+				AAEC60AB2DF3A3F80004ACF7 /* AuthStateObserver.swift in Sources */,
 				AA15B6C02DEF8075002F7E9C /* ConfettiView.swift in Sources */,
 				AA15B6BC2DEF57AD002F7E9C /* ProfileView.swift in Sources */,
 				AA15B6BD2DEF57AD002F7E9C /* WorkoutDetailView.swift in Sources */,
-				AA6C6E392DEE291900123FBD /* SignInView.swift in Sources */,
-				AA6C6E3A2DEE291900123FBD /* SignUpView.swift in Sources */,
 				1A2B3C4D5E6F7890ABCDEF01 /* FitJourneyApp.swift in Sources */,
 				AA6C6E3F2DEE22B800123FBD /* (null) in Sources */,
 				AA6C6E412DEE22B800123FBD /* WorkoutViewModel.swift in Sources */,
 				AA6C6E432DEE22B800123FBD /* GoalViewModel.swift in Sources */,
 				AA6C6E452DEE22B800123FBD /* MainTabView.swift in Sources */,
-				AA6C6E472DEE22B800123FBD /* AuthView.swift in Sources */,
-				AA15B6A92DEF5674002F7E9C /* AuthViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

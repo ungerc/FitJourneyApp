@@ -1,12 +1,13 @@
 import SwiftUI
+import AppCore
 
-struct ProfileView: View {
-    @Environment(AuthViewModel.self) private var authViewModel
+internal struct ProfileView: View {
+    @Environment(\.authAdapter) private var authAdapter: ApplicationAuthAdapter?
 
     var body: some View {
         NavigationView {
             List {
-                if let user = authViewModel.currentUser {
+                if let user = authAdapter?.currentUser {
                     Section {
                         HStack {
                             Image(systemName: "person.circle.fill")
@@ -53,7 +54,11 @@ struct ProfileView: View {
                 
                 Section {
                     Button(action: {
-                        authViewModel.signOut()
+                        do {
+                            try authAdapter?.signOut()
+                        } catch {
+                            print("Failed to sign out: \(error)")
+                        }
                     }) {
                         HStack {
                             Text("Sign Out")
