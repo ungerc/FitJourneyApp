@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 import Networking
 import Authentication
-import FitnessTracker
+import Benefit
 
 // MARK: - Auth Adapter Protocol
 /// Protocol for authentication adapters in the application layer.
@@ -87,7 +87,7 @@ public protocol ApplicationWorkoutAdapter {
     /// Creates or returns the workout view model.
     /// - Returns: The workout view model instance
     @MainActor
-    func makeWorkoutViewModel() -> FitnessTracker.WorkoutViewModel
+    func makeWorkoutViewModel() -> Benefit.WorkoutViewModel
 }
 
 // MARK: - Goal Adapter Protocol
@@ -143,7 +143,7 @@ public protocol ApplicationGoalAdapter {
     /// Creates or returns the goal view model.
     /// - Returns: The goal view model instance
     @MainActor
-    func makeGoalViewModel() -> FitnessTracker.GoalViewModel
+    func makeGoalViewModel() -> Benefit.GoalViewModel
 }
 
 // MARK: - Network Adapter Protocol
@@ -215,8 +215,8 @@ public struct AppWorkout: Identifiable, Codable, Sendable {
         self.type = type
     }
     
-    // Convert from FitnessTracker Workout
-    public init(workout: FitnessTracker.Workout) {
+    // Convert from Benefit Workout
+    public init(workout: Benefit.Workout) {
         self.id = workout.id
         self.name = workout.name
         self.duration = workout.duration
@@ -245,8 +245,8 @@ public enum AppWorkoutType: String, Codable, CaseIterable, Sendable {
         }
     }
     
-    // Convert from FitnessTracker WorkoutType
-    public init(fitnessType: FitnessTracker.WorkoutType) {
+    // Convert from Benefit WorkoutType
+    public init(fitnessType: Benefit.WorkoutType) {
         switch fitnessType {
         case .running: self = .running
         case .cycling: self = .cycling
@@ -281,8 +281,8 @@ public struct AppGoal: Identifiable, Codable, Sendable {
         self.type = type
     }
     
-    // Convert from FitnessTracker Goal
-    public init(goal: FitnessTracker.Goal) {
+    // Convert from Benefit Goal
+    public init(goal: Benefit.Goal) {
         self.id = goal.id
         self.name = goal.name
         self.targetValue = goal.targetValue
@@ -310,8 +310,8 @@ public enum AppGoalType: String, Codable, CaseIterable, Sendable {
         }
     }
     
-    // Convert from FitnessTracker GoalType
-    public init(fitnessType: FitnessTracker.GoalType) {
+    // Convert from Benefit GoalType
+    public init(fitnessType: Benefit.GoalType) {
         switch fitnessType {
         case .weight: self = .weight
         case .steps: self = .steps

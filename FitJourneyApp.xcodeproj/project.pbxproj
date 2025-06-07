@@ -10,9 +10,9 @@
 		1A2B3C4D5E6F7890ABCDEF01 /* FitJourneyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7890ABCDEF02 /* FitJourneyApp.swift */; };
 		AA15B6B72DEF57AD002F7E9C /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA15B6AA2DEF57AD002F7E9C /* DashboardView.swift */; };
 		AA15B6BC2DEF57AD002F7E9C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA15B6B02DEF57AD002F7E9C /* ProfileView.swift */; };
-		AA1FA3BA2DF4A42700E389A6 /* AppCore in Frameworks */ = {isa = PBXBuildFile; productRef = AA6C6E492DEE22B800123FBE /* AppCore */; };
-		AA1FA3BB2DF4A42700E389A6 /* AppCore in Frameworks */ = {isa = PBXBuildFile; productRef = AABA0DCA2DEF4D2B002FB75F /* AppCore */; };
-		AA1FA3BC2DF4A42700E389A6 /* AppCore in Frameworks */ = {isa = PBXBuildFile; productRef = AA15B6A72DEF5350002F7E9C /* AppCore */; };
+		AA1FA4002DF4AE3800E389A6 /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = AA1FA3FF2DF4AE3800E389A6 /* Authentication */; };
+		AA1FA4022DF4AE3800E389A6 /* Benefit in Frameworks */ = {isa = PBXBuildFile; productRef = AA1FA4012DF4AE3800E389A6 /* Benefit */; };
+		AA1FA4042DF4AE3800E389A6 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = AA1FA4032DF4AE3800E389A6 /* Networking */; };
 		AA6C6E3F2DEE22B800123FBD /* (null) in Sources */ = {isa = PBXBuildFile; };
 		AA6C6E452DEE22B800123FBD /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6C6E462DEE22B800123FBD /* MainTabView.swift */; };
 		AAEC60AB2DF3A3F80004ACF7 /* AuthStateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC60AA2DF3A3F80004ACF7 /* AuthStateObserver.swift */; };
@@ -20,9 +20,6 @@
 		AAF04F452DF4463C00F9BC2B /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF04F422DF4463C00F9BC2B /* ServiceProvider.swift */; };
 		AAF04F462DF4463C00F9BC2B /* ApplicationAdapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF04F3E2DF4463C00F9BC2B /* ApplicationAdapters.swift */; };
 		AAF04F472DF4463C00F9BC2B /* ApplicationServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF04F412DF4463C00F9BC2B /* ApplicationServiceFactory.swift */; };
-		AAF04F492DF4485C00F9BC2B /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = AAF04F482DF4485C00F9BC2B /* Authentication */; };
-		AAF04F4B2DF4485C00F9BC2B /* FitnessTracker in Frameworks */ = {isa = PBXBuildFile; productRef = AAF04F4A2DF4485C00F9BC2B /* FitnessTracker */; };
-		AAF04F4D2DF4485C00F9BC2B /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = AAF04F4C2DF4485C00F9BC2B /* Networking */; };
 		AAF04F632DF469E300F9BC2B /* BenefitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF04F612DF469E300F9BC2B /* BenefitView.swift */; };
 		AAF04F732DF474DF00F9BC2B /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF04F712DF474DF00F9BC2B /* NavigationRouter.swift */; };
 		AAF04F742DF474DF00F9BC2B /* View+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF04F6F2DF474DF00F9BC2B /* View+Navigation.swift */; };
@@ -85,12 +82,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA1FA3BC2DF4A42700E389A6 /* AppCore in Frameworks */,
-				AA1FA3BB2DF4A42700E389A6 /* AppCore in Frameworks */,
-				AA1FA3BA2DF4A42700E389A6 /* AppCore in Frameworks */,
-				AAF04F4D2DF4485C00F9BC2B /* Networking in Frameworks */,
-				AAF04F4B2DF4485C00F9BC2B /* FitnessTracker in Frameworks */,
-				AAF04F492DF4485C00F9BC2B /* Authentication in Frameworks */,
+				AA1FA4042DF4AE3800E389A6 /* Networking in Frameworks */,
+				AA1FA4022DF4AE3800E389A6 /* Benefit in Frameworks */,
+				AA1FA4002DF4AE3800E389A6 /* Authentication in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,12 +245,9 @@
 			);
 			name = FitJourneyApp;
 			packageProductDependencies = (
-				AA6C6E492DEE22B800123FBE /* AppCore */,
-				AABA0DCA2DEF4D2B002FB75F /* AppCore */,
-				AA15B6A72DEF5350002F7E9C /* AppCore */,
-				AAF04F482DF4485C00F9BC2B /* Authentication */,
-				AAF04F4A2DF4485C00F9BC2B /* FitnessTracker */,
-				AAF04F4C2DF4485C00F9BC2B /* Networking */,
+				AA1FA3FF2DF4AE3800E389A6 /* Authentication */,
+				AA1FA4012DF4AE3800E389A6 /* Benefit */,
+				AA1FA4032DF4AE3800E389A6 /* Networking */,
 			);
 			productName = FitJourneyApp;
 			productReference = 1A2B3C4D5E6F7890ABCDEF00 /* FitJourneyApp.app */;
@@ -314,7 +305,7 @@
 			);
 			mainGroup = 1A2B3C4D5E6F7890ABCDEF06;
 			packageReferences = (
-				AA15B6A62DEF5350002F7E9C /* XCLocalSwiftPackageReference "../SwiftUIApp" */,
+				AA1FA3FE2DF4AE3800E389A6 /* XCLocalSwiftPackageReference "../SwiftUIApp" */,
 			);
 			productRefGroup = 1A2B3C4D5E6F7890ABCDEF04 /* Products */;
 			projectDirPath = "";
@@ -643,38 +634,23 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		AA15B6A62DEF5350002F7E9C /* XCLocalSwiftPackageReference "../SwiftUIApp" */ = {
+		AA1FA3FE2DF4AE3800E389A6 /* XCLocalSwiftPackageReference "../SwiftUIApp" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../SwiftUIApp;
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		AA15B6A72DEF5350002F7E9C /* AppCore */ = {
+		AA1FA3FF2DF4AE3800E389A6 /* Authentication */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = AppCore;
-		};
-		AA6C6E492DEE22B800123FBE /* AppCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = AppCore;
-		};
-		AABA0DCA2DEF4D2B002FB75F /* AppCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = AppCore;
-		};
-		AAF04F482DF4485C00F9BC2B /* Authentication */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA15B6A62DEF5350002F7E9C /* XCLocalSwiftPackageReference "../SwiftUIApp" */;
 			productName = Authentication;
 		};
-		AAF04F4A2DF4485C00F9BC2B /* FitnessTracker */ = {
+		AA1FA4012DF4AE3800E389A6 /* Benefit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AA15B6A62DEF5350002F7E9C /* XCLocalSwiftPackageReference "../SwiftUIApp" */;
-			productName = FitnessTracker;
+			productName = Benefit;
 		};
-		AAF04F4C2DF4485C00F9BC2B /* Networking */ = {
+		AA1FA4032DF4AE3800E389A6 /* Networking */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AA15B6A62DEF5350002F7E9C /* XCLocalSwiftPackageReference "../SwiftUIApp" */;
 			productName = Networking;
 		};
 /* End XCSwiftPackageProductDependency section */

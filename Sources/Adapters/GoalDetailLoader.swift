@@ -1,5 +1,5 @@
 import SwiftUI
-import FitnessTracker
+import Benefit
 
 /// Helper view that loads a goal detail when it's not already in the view model.
 /// 
@@ -13,9 +13,9 @@ struct GoalDetailLoader: View {
     /// Service for fetching goal data
     let goalService: GoalServiceProtocol
     /// The goal view model that may already contain the goal
-    let goalViewModel: FitnessTracker.GoalViewModel
+    let goalViewModel: Benefit.GoalViewModel
     /// The loaded goal, if found
-    @State private var goal: FitnessTracker.Goal?
+    @State private var goal: Benefit.Goal?
     /// Loading state flag
     @State private var isLoading = true
     /// Error encountered during loading, if any
@@ -26,7 +26,7 @@ struct GoalDetailLoader: View {
             if isLoading {
                 ProgressView("Loading goal...")
             } else if let goal = goal {
-                FitnessTracker.GoalDetailView(goal: goal)
+                Benefit.GoalDetailView(goal: goal)
                     .environment(goalViewModel)
             } else {
                 ContentUnavailableView("Goal Not Found", 

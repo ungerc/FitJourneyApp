@@ -1,7 +1,7 @@
 import Foundation
 import Networking
 import Authentication
-import FitnessTracker
+import Benefit
 
 /// Central service provider that creates and manages all application services and adapters.
 /// This class follows the dependency injection pattern to provide services throughout the app.

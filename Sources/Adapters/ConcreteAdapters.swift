@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 import Networking
 import Authentication
-import FitnessTracker
+import Benefit
 
 // MARK: - Concrete Network Adapter
 internal class ConcreteNetworkAdapter: ApplicationNetworkAdapter {
@@ -80,7 +80,7 @@ internal class ConcreteAuthAdapter: ApplicationAuthAdapter {
 // MARK: - Concrete Workout Adapter
 internal class ConcreteWorkoutAdapter: ApplicationWorkoutAdapter {
     private let workoutService: WorkoutServiceProtocol
-    private var _workoutViewModel: FitnessTracker.WorkoutViewModel?
+    private var _workoutViewModel: Benefit.WorkoutViewModel?
     
     init(workoutService: WorkoutServiceProtocol) {
         self.workoutService = workoutService
@@ -99,8 +99,8 @@ internal class ConcreteWorkoutAdapter: ApplicationWorkoutAdapter {
                            caloriesBurned: Double,
                            date: Date) async throws -> AppWorkout {
 
-        // Convert AppWorkoutType to FitnessTracker.WorkoutType
-        let fitnessType: FitnessTracker.WorkoutType
+        // Convert AppWorkoutType to Benefit.WorkoutType
+        let fitnessType: Benefit.WorkoutType
 
         switch type {
         case .running: fitnessType = .running
@@ -111,7 +111,7 @@ internal class ConcreteWorkoutAdapter: ApplicationWorkoutAdapter {
         case .hiit: fitnessType = .hiit
         }
         
-        let workout = FitnessTracker.Workout(
+        let workout = Benefit.Workout(
             id: UUID().uuidString, // This will be replaced by the server
             name: name,
             duration: duration,
@@ -132,7 +132,7 @@ internal class ConcreteWorkoutAdapter: ApplicationWorkoutAdapter {
     @MainActor
     func makeWorkoutsView() -> AnyView {
         AnyView(
-            FitnessTracker.WorkoutsView()
+            Benefit.WorkoutsView()
                 .environment(makeWorkoutViewModel())
         )
     }
@@ -144,7 +144,7 @@ internal class ConcreteWorkoutAdapter: ApplicationWorkoutAdapter {
         // Find the workout in the view model's workouts array
         if let workout = viewModel.workouts.first(where: { $0.id == workoutId }) {
             return AnyView(
-                FitnessTracker.WorkoutDetailView(workout: workout)
+                Benefit.WorkoutDetailView(workout: workout)
             )
         } else {
             // Return a loading view that will fetch the workout
@@ -155,9 +155,9 @@ internal class ConcreteWorkoutAdapter: ApplicationWorkoutAdapter {
     }
     
     @MainActor
-    func makeWorkoutViewModel() -> FitnessTracker.WorkoutViewModel {
+    func makeWorkoutViewModel() -> Benefit.WorkoutViewModel {
         if _workoutViewModel == nil {
-            _workoutViewModel = FitnessTracker.WorkoutViewModel(workoutService: workoutService)
+            _workoutViewModel = Benefit.WorkoutViewModel(workoutService: workoutService)
         }
         return _workoutViewModel!
     }
@@ -167,7 +167,7 @@ internal class ConcreteWorkoutAdapter: ApplicationWorkoutAdapter {
 // MARK: - Concrete Goal Adapter
 internal class ConcreteGoalAdapter: ApplicationGoalAdapter {
     private let goalService: GoalServiceProtocol
-    private var _goalViewModel: FitnessTracker.GoalViewModel?
+    private var _goalViewModel: Benefit.GoalViewModel?
     
     init(goalService: GoalServiceProtocol) {
         self.goalService = goalService
@@ -181,8 +181,8 @@ internal class ConcreteGoalAdapter: ApplicationGoalAdapter {
 
     @MainActor
     func addGoal(name: String, type: AppGoalType, targetValue: Double, currentValue: Double, unit: String, deadline: Date?) async throws -> AppGoal {
-        // Convert AppGoalType to FitnessTracker.GoalType
-        let fitnessType: FitnessTracker.GoalType
+        // Convert AppGoalType to Benefit.GoalType
+        let fitnessType: Benefit.GoalType
         switch type {
         case .weight: fitnessType = .weight
         case .steps: fitnessType = .steps
@@ -191,7 +191,7 @@ internal class ConcreteGoalAdapter: ApplicationGoalAdapter {
         case .calories: fitnessType = .calories
         }
         
-        let goal = FitnessTracker.Goal(
+        let goal = Benefit.Goal(
             id: UUID().uuidString, // This will be replaced by the server
             name: name,
             targetValue: targetValue,
@@ -219,7 +219,7 @@ internal class ConcreteGoalAdapter: ApplicationGoalAdapter {
     @MainActor
     func makeGoalsView() -> AnyView {
         AnyView(
-            FitnessTracker.GoalsView()
+            Benefit.GoalsView()
                 .environment(makeGoalViewModel())
         )
     }
@@ -231,7 +231,7 @@ internal class ConcreteGoalAdapter: ApplicationGoalAdapter {
         // Find the goal in the view model's goals array
         if let goal = viewModel.goals.first(where: { $0.id == goalId }) {
             return AnyView(
-                FitnessTracker.GoalDetailView(goal: goal)
+                Benefit.GoalDetailView(goal: goal)
                     .environment(viewModel)
             )
         } else {
@@ -245,15 +245,15 @@ internal class ConcreteGoalAdapter: ApplicationGoalAdapter {
     @MainActor
     func makeAddGoalView() -> AnyView {
         AnyView(
-            FitnessTracker.AddGoalView()
+            Benefit.AddGoalView()
                 .environment(makeGoalViewModel())
         )
     }
     
     @MainActor
-    func makeGoalViewModel() -> FitnessTracker.GoalViewModel {
+    func makeGoalViewModel() -> Benefit.GoalViewModel {
         if _goalViewModel == nil {
-            _goalViewModel = FitnessTracker.GoalViewModel(goalService: goalService)
+            _goalViewModel = Benefit.GoalViewModel(goalService: goalService)
         }
         return _goalViewModel!
     }

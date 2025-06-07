@@ -1,7 +1,7 @@
 import Foundation
 import Networking
 import Authentication
-import FitnessTracker
+import Benefit
 
 // Adapter to make NetworkServiceProtocol conform to AuthNetworkService and FitnessNetworkService
 extension NetworkManager: @retroactive AuthNetworkService, @retroactive FitnessNetworkService {

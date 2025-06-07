@@ -2,7 +2,7 @@ import Testing
 import Foundation
 @testable import FitJourneyApp
 @testable import Authentication
-@testable import FitnessTracker
+@testable import Benefit
 
 @Suite("Application Adapter Protocol Tests")
 struct ApplicationAdapterProtocolTests {
@@ -77,7 +77,7 @@ struct ApplicationAdapterProtocolTests {
     @Test("WorkoutType conversion works both ways")
     func workoutTypeConversion() {
         // Test all workout types
-        let workoutTypes: [(FitnessTracker.WorkoutType, AppWorkoutType)] = [
+        let workoutTypes: [(Benefit.WorkoutType, AppWorkoutType)] = [
             (.running, .running),
             (.cycling, .cycling),
             (.swimming, .swimming),
@@ -95,7 +95,7 @@ struct ApplicationAdapterProtocolTests {
     @Test("GoalType conversion works both ways")
     func goalTypeConversion() {
         // Test all goal types
-        let goalTypes: [(FitnessTracker.GoalType, AppGoalType)] = [
+        let goalTypes: [(Benefit.GoalType, AppGoalType)] = [
             (.weight, .weight),
             (.steps, .steps),
             (.workouts, .workouts),

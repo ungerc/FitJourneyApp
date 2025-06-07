@@ -2,7 +2,7 @@ import Testing
 import SwiftUI
 @testable import FitJourneyApp
 @testable import Authentication
-@testable import FitnessTracker
+@testable import Benefit
 
 @Suite("ConcreteAdapters Tests")
 struct ConcreteAdaptersTests {

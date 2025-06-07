@@ -58,7 +58,7 @@ graph TB
             SignUpView[SignUpView]
         end
         
-        subgraph "FitnessTracker Module"
+        subgraph "Benefit Module"
             WorkoutViewModel[WorkoutViewModel]
             GoalViewModel[GoalViewModel]
             WorkoutsView[WorkoutsView]
@@ -120,7 +120,7 @@ graph TB
     AuthView --> AuthViewModel
     AuthViewModel --> AuthManager
     
-    %% FitnessTracker Dependencies
+    %% Benefit Dependencies
     WorkoutsView --> WorkoutViewModel
     WorkoutsView --> AddWorkoutView
     GoalsView --> GoalViewModel
@@ -189,7 +189,7 @@ graph TD
     
     subgraph "Feature Modules"
         Auth[Authentication]
-        Fitness[FitnessTracker]
+        Fitness[Benefit]
     end
     
     subgraph "Core Modules"
