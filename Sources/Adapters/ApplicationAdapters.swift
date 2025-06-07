@@ -78,6 +78,12 @@ public protocol ApplicationWorkoutAdapter {
     @MainActor
     func makeWorkoutsView() -> AnyView
     
+    /// Creates a workout detail view for the specified workout ID.
+    /// - Parameter workoutId: The ID of the workout to display
+    /// - Returns: A type-erased view for the workout detail
+    @MainActor
+    func makeWorkoutDetailView(for workoutId: String) -> AnyView
+    
     /// Creates or returns the workout view model.
     /// - Returns: The workout view model instance
     @MainActor
@@ -122,6 +128,17 @@ public protocol ApplicationGoalAdapter {
     /// - Returns: A type-erased view for goals
     @MainActor
     func makeGoalsView() -> AnyView
+    
+    /// Creates a goal detail view for the specified goal ID.
+    /// - Parameter goalId: The ID of the goal to display
+    /// - Returns: A type-erased view for the goal detail
+    @MainActor
+    func makeGoalDetailView(for goalId: String) -> AnyView
+    
+    /// Creates the add goal view for the UI.
+    /// - Returns: A type-erased view for adding a new goal
+    @MainActor
+    func makeAddGoalView() -> AnyView
     
     /// Creates or returns the goal view model.
     /// - Returns: The goal view model instance

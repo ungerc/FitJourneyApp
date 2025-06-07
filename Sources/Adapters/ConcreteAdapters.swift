@@ -138,6 +138,23 @@ internal class ConcreteWorkoutAdapter: ApplicationWorkoutAdapter {
     }
     
     @MainActor
+    func makeWorkoutDetailView(for workoutId: String) -> AnyView {
+        let viewModel = makeWorkoutViewModel()
+        
+        // Find the workout in the view model's workouts array
+        if let workout = viewModel.workouts.first(where: { $0.id == workoutId }) {
+            return AnyView(
+                FitnessTracker.WorkoutDetailView(workout: workout)
+            )
+        } else {
+            // Return a loading view that will fetch the workout
+            return AnyView(
+                WorkoutDetailLoader(workoutId: workoutId, workoutService: workoutService, workoutViewModel: viewModel)
+            )
+        }
+    }
+    
+    @MainActor
     func makeWorkoutViewModel() -> FitnessTracker.WorkoutViewModel {
         if _workoutViewModel == nil {
             _workoutViewModel = FitnessTracker.WorkoutViewModel(workoutService: workoutService)
@@ -145,6 +162,7 @@ internal class ConcreteWorkoutAdapter: ApplicationWorkoutAdapter {
         return _workoutViewModel!
     }
 }
+
 
 // MARK: - Concrete Goal Adapter
 internal class ConcreteGoalAdapter: ApplicationGoalAdapter {
@@ -207,6 +225,32 @@ internal class ConcreteGoalAdapter: ApplicationGoalAdapter {
     }
     
     @MainActor
+    func makeGoalDetailView(for goalId: String) -> AnyView {
+        let viewModel = makeGoalViewModel()
+        
+        // Find the goal in the view model's goals array
+        if let goal = viewModel.goals.first(where: { $0.id == goalId }) {
+            return AnyView(
+                FitnessTracker.GoalDetailView(goal: goal)
+                    .environment(viewModel)
+            )
+        } else {
+            // Return a loading view that will fetch the goal
+            return AnyView(
+                GoalDetailLoader(goalId: goalId, goalService: goalService, goalViewModel: viewModel)
+            )
+        }
+    }
+    
+    @MainActor
+    func makeAddGoalView() -> AnyView {
+        AnyView(
+            FitnessTracker.AddGoalView()
+                .environment(makeGoalViewModel())
+        )
+    }
+    
+    @MainActor
     func makeGoalViewModel() -> FitnessTracker.GoalViewModel {
         if _goalViewModel == nil {
             _goalViewModel = FitnessTracker.GoalViewModel(goalService: goalService)
@@ -214,3 +258,4 @@ internal class ConcreteGoalAdapter: ApplicationGoalAdapter {
         return _goalViewModel!
     }
 }
+

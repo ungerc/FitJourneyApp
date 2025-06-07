@@ -10,6 +10,9 @@ struct FitJourneyApp: App {
     @State private var authStateObserver: AuthStateObserver
     private let goalAdapter: ApplicationGoalAdapter
     private let workoutAdapter: ApplicationWorkoutAdapter
+    
+    // Navigation router
+    @State private var navigationRouter = NavigationRouter()
 
     init() {
         serviceFactory = ApplicationServiceFactory()
@@ -24,32 +27,29 @@ struct FitJourneyApp: App {
             ContentView(authAdapter: authAdapter, goalAdapter: goalAdapter, workoutAdapter: workoutAdapter)
                 .environment(authStateObserver)
                 .environment(\.authAdapter, authAdapter)
-        }
-    }
-}
-
-// Main content view that handles authentication state
-private struct ContentView: View {
-    private let authAdapter: ApplicationAuthAdapter
-    private let goalAdapter: ApplicationGoalAdapter
-    private let workoutAdapter: ApplicationWorkoutAdapter
-    @Environment(AuthStateObserver.self) private var authStateObserver
-    
-    init(authAdapter: ApplicationAuthAdapter, goalAdapter: ApplicationGoalAdapter, workoutAdapter: ApplicationWorkoutAdapter) {
-        self.authAdapter = authAdapter
-        self.goalAdapter = goalAdapter
-        self.workoutAdapter = workoutAdapter
-    }
-
-    var body: some View {
-        @Bindable var authState = authStateObserver
-        
-        Group {
-            MainTabView(goalAdapter: goalAdapter, workoutAdapter: workoutAdapter)
-                .fullScreenCover(isPresented: $authState.isNotAuthenticated) {
-                    authAdapter.makeAuthView()
-                        .interactiveDismissDisabled(true)
+                .environment(navigationRouter)
+                .onOpenURL { url in
+                    handleDeepLink(url)
                 }
         }
     }
+    
+    private func handleDeepLink(_ url: URL) {
+        // Example: fitjourney://workout/123
+        guard let host = url.host else { return }
+        
+        switch host {
+        case "workout":
+            if let workoutId = url.pathComponents.dropFirst().first {
+                navigationRouter.navigate(to: .workoutDetail(workoutId: workoutId))
+            }
+        case "goal":
+            if let goalId = url.pathComponents.dropFirst().first {
+                navigationRouter.navigate(to: .goalDetail(goalId: goalId))
+            }
+        default:
+            break
+        }
+    }
 }
+

@@ -6,6 +6,7 @@ struct DashboardView: View {
     @State private var workouts: [AppWorkout] = []
     @State private var goals: [AppGoal] = []
     @State private var isLoading = false
+    @Environment(NavigationRouter.self) private var navigationRouter
     
     init(goalAdapter: ApplicationGoalAdapter, workoutAdapter: ApplicationWorkoutAdapter) {
         self.goalAdapter = goalAdapter
@@ -42,12 +43,21 @@ struct DashboardView: View {
                                 color: .orange
                             )
                             
-                            SummaryCard(
-                                title: "Active Goals",
-                                value: "\(inProgressGoals.count)",
-                                icon: "target",
-                                color: .purple
-                            )
+                            if inProgressGoals.isEmpty && !goals.isEmpty {
+                                SummaryCard(
+                                    title: "Goals Completed",
+                                    value: "\(goals.count)",
+                                    icon: "trophy.fill",
+                                    color: .yellow
+                                )
+                            } else {
+                                SummaryCard(
+                                    title: "Active Goals",
+                                    value: "\(inProgressGoals.count)",
+                                    icon: "target",
+                                    color: .purple
+                                )
+                            }
                         }
                     }
                     .padding(.horizontal)
@@ -69,6 +79,9 @@ struct DashboardView: View {
                                     ForEach(recentWorkouts) { workout in
                                         WorkoutCard(workout: workout)
                                             .frame(width: 250)
+                                            .onTapGesture {
+                                                navigateToWorkout(workout.id)
+                                            }
                                     }
                                 }
                                 .padding(.horizontal)
@@ -87,10 +100,17 @@ struct DashboardView: View {
                                 message: "No goals set",
                                 systemImage: "target"
                             )
+                        } else if inProgressGoals.isEmpty && !goals.isEmpty {
+                            // All goals completed
+                            CompletedGoalsView(completedCount: goals.count)
+                                .padding(.horizontal)
                         } else {
                             VStack(spacing: 15) {
                                 ForEach(inProgressGoals.prefix(3)) { goal in
                                     GoalProgressCard(goal: goal)
+                                        .onTapGesture {
+                                            navigateToGoal(goal.id)
+                                        }
                                 }
                             }
                             .padding(.horizontal)
@@ -145,193 +165,13 @@ struct DashboardView: View {
         
         isLoading = false
     }
-}
-
-// MARK: - Workout Card
-struct WorkoutCard: View {
-    let workout: AppWorkout
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                Image(systemName: workout.type.icon)
-                    .font(.title3)
-                    .foregroundColor(.white)
-                    .frame(width: 36, height: 36)
-                    .background(Color.blue)
-                    .clipShape(Circle())
-                
-                Spacer()
-                
-                Text(workout.date, style: .date)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-            }
-            
-            Text(workout.name)
-                .font(.headline)
-            
-            Divider()
-            
-            HStack {
-                VStack(alignment: .leading) {
-                    Text("Duration")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                    
-                    Text(formatDuration(workout.duration))
-                        .font(.subheadline)
-                }
-                
-                Spacer()
-                
-                VStack(alignment: .trailing) {
-                    Text("Calories")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                    
-                    Text("\(Int(workout.caloriesBurned))")
-                        .font(.subheadline)
-                        .foregroundColor(.orange)
-                }
-            }
-        }
-        .padding()
-        .background(Color.gray.opacity(0.1))
-        .cornerRadius(12)
+    
+    private func navigateToWorkout(_ workoutId: String) {
+        navigationRouter.navigate(to: .workoutDetail(workoutId: workoutId))
     }
     
-    private func formatDuration(_ duration: TimeInterval) -> String {
-        let hours = Int(duration) / 3600
-        let minutes = (Int(duration) % 3600) / 60
-        
-        if hours > 0 {
-            return "\(hours)h \(minutes)m"
-        } else {
-            return "\(minutes)m"
-        }
+    private func navigateToGoal(_ goalId: String) {
+        navigationRouter.navigate(to: .goalDetail(goalId: goalId))
     }
 }
 
-// MARK: - Goal Progress Card
-struct GoalProgressCard: View {
-    let goal: AppGoal
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                Image(systemName: goal.type.icon)
-                    .font(.title3)
-                    .foregroundColor(.white)
-                    .frame(width: 36, height: 36)
-                    .background(Color.blue)
-                    .clipShape(Circle())
-                
-                Text(goal.name)
-                    .font(.headline)
-                
-                Spacer()
-                
-                Text("\(Int(goal.progress * 100))%")
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
-                    .foregroundColor(progressColor)
-            }
-            
-            ProgressView(value: goal.progress)
-                .progressViewStyle(LinearProgressViewStyle(tint: progressColor))
-            
-            HStack {
-                Text("\(Int(goal.currentValue)) / \(Int(goal.targetValue)) \(goal.unit)")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                
-                Spacer()
-                
-                if let deadline = goal.deadline {
-                    Text(deadline, style: .date)
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                }
-            }
-        }
-        .padding()
-        .background(Color.gray.opacity(0.1))
-        .cornerRadius(12)
-    }
-    
-    private var progressColor: Color {
-        if goal.progress >= 1.0 {
-            return .green
-        } else if goal.progress >= 0.7 {
-            return .blue
-        } else if goal.progress >= 0.3 {
-            return .orange
-        } else {
-            return .red
-        }
-    }
-}
-
-struct SummaryCard: View {
-    let title: String
-    let value: String
-    let icon: String
-    let color: Color
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                Image(systemName: icon)
-                    .font(.title2)
-                    .foregroundColor(color)
-                
-                Spacer()
-                
-                Text(value)
-                    .font(.title)
-                    .fontWeight(.bold)
-            }
-            
-            Text(title)
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-        }
-        .padding()
-        .background(Color.gray.opacity(0.1))
-        .cornerRadius(12)
-        .frame(maxWidth: .infinity)
-    }
-}
-
-struct EmptyStateView: View {
-    let message: String
-    let systemImage: String
-    
-    var body: some View {
-        VStack(spacing: 10) {
-            Image(systemName: systemImage)
-                .font(.system(size: 50))
-                .foregroundColor(.gray)
-            
-            Text(message)
-                .font(.headline)
-                .foregroundColor(.gray)
-        }
-        .frame(maxWidth: .infinity)
-        .padding()
-    }
-}
-
-//struct DashboardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let networkManager = NetworkManager()
-//        let authManager = AuthManager(networkManager: networkManager)
-//        let workoutService = WorkoutService(networkManager: networkManager, authManager: authManager)
-//        let goalService = GoalService(networkManager: networkManager, authManager: authManager)
-//        
-//        DashboardView()
-//            .environmentObject(WorkoutViewModel(workoutService: workoutService))
-//            .environmentObject(GoalViewModel(goalService: goalService))
-//    }
-//}

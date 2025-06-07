@@ -5,6 +5,8 @@ import SwiftUI
 internal struct BenefitView: View {
     private let goalAdapter: ApplicationGoalAdapter
     private let workoutAdapter: ApplicationWorkoutAdapter
+    @Environment(NavigationRouter.self) private var navigationRouter
+    @State private var showingAddGoal = false
     
     init(goalAdapter: ApplicationGoalAdapter, workoutAdapter: ApplicationWorkoutAdapter) {
         self.goalAdapter = goalAdapter
@@ -12,7 +14,9 @@ internal struct BenefitView: View {
     }
     
     var body: some View {
-        NavigationStack {
+        @Bindable var router = navigationRouter
+        
+        NavigationStack(path: $router.path) {
             List {
                 Section {
                     NavigationLink(destination: workoutAdapter.makeWorkoutsView()) {
@@ -33,9 +37,6 @@ internal struct BenefitView: View {
                             }
                             
                             Spacer()
-                            
-                            Image(systemName: "chevron.right")
-                                .foregroundColor(.secondary)
                         }
                         .padding(.vertical, 8)
                     }
@@ -58,9 +59,6 @@ internal struct BenefitView: View {
                             }
                             
                             Spacer()
-                            
-                            Image(systemName: "chevron.right")
-                                .foregroundColor(.secondary)
                         }
                         .padding(.vertical, 8)
                     }
@@ -71,105 +69,33 @@ internal struct BenefitView: View {
                 }
             }
             .navigationTitle("Benefit")
+            .navigationDestination(for: NavigationDestination.self) { destination in
+                switch destination {
+                case .workoutDetail(let workoutId):
+                    workoutAdapter.makeWorkoutDetailView(for: workoutId)
+                case .goalDetail(let goalId):
+                    goalAdapter.makeGoalDetailView(for: goalId)
+                case .goals:
+                    goalAdapter.makeGoalsView()
+                default:
+                    EmptyView()
+                }
+            }
+            .sheet(isPresented: $showingAddGoal) {
+                goalAdapter.makeAddGoalView()
+            }
+        }
+        .onAppear {
+            handlePendingNavigation()
+        }
+    }
+    
+    private func handlePendingNavigation() {
+        if let destination = navigationRouter.pendingDestination {
+            navigationRouter.path.append(destination)
+            navigationRouter.pendingDestination = nil
         }
     }
 }
 
-/// Quick stats view showing summary of workouts and goals
-private struct QuickStatsView: View {
-    private let goalAdapter: ApplicationGoalAdapter
-    private let workoutAdapter: ApplicationWorkoutAdapter
-    @State private var workoutCount = 0
-    @State private var activeGoalsCount = 0
-    @State private var completedGoalsCount = 0
-    @State private var isLoading = true
-    
-    init(goalAdapter: ApplicationGoalAdapter, workoutAdapter: ApplicationWorkoutAdapter) {
-        self.goalAdapter = goalAdapter
-        self.workoutAdapter = workoutAdapter
-    }
-    
-    var body: some View {
-        VStack(spacing: 12) {
-            HStack {
-                StatItem(
-                    title: "Total Workouts",
-                    value: "\(workoutCount)",
-                    icon: "figure.run",
-                    color: .blue
-                )
-                
-                Spacer()
-                
-                StatItem(
-                    title: "Active Goals",
-                    value: "\(activeGoalsCount)",
-                    icon: "target",
-                    color: .orange
-                )
-                
-                Spacer()
-                
-                StatItem(
-                    title: "Completed",
-                    value: "\(completedGoalsCount)",
-                    icon: "checkmark.circle",
-                    color: .green
-                )
-            }
-        }
-        .padding(.vertical, 8)
-        .task {
-            await loadStats()
-        }
-        .overlay {
-            if isLoading {
-                ProgressView()
-                    .scaleEffect(0.8)
-            }
-        }
-    }
-    
-    @MainActor
-    private func loadStats() async {
-        isLoading = true
-        
-        // Fetch workouts
-        if let workouts = try? await workoutAdapter.fetchWorkouts() {
-            workoutCount = workouts.count
-        }
-        
-        // Fetch goals
-        if let goals = try? await goalAdapter.fetchGoals() {
-            activeGoalsCount = goals.filter { $0.progress < 1.0 }.count
-            completedGoalsCount = goals.filter { $0.progress >= 1.0 }.count
-        }
-        
-        isLoading = false
-    }
-}
 
-private struct StatItem: View {
-    let title: String
-    let value: String
-    let icon: String
-    let color: Color
-    
-    var body: some View {
-        VStack(spacing: 8) {
-            Image(systemName: icon)
-                .font(.title3)
-                .foregroundColor(color)
-            
-            Text(value)
-                .font(.title2)
-                .fontWeight(.semibold)
-            
-            Text(title)
-                .font(.caption)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
-        }
-        .frame(maxWidth: .infinity)
-    }
-}

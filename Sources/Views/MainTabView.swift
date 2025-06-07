@@ -4,6 +4,7 @@ import SwiftUI
 internal struct MainTabView: View {
     private let goalAdapter: ApplicationGoalAdapter
     private let workoutAdapter: ApplicationWorkoutAdapter
+    @Environment(NavigationRouter.self) private var navigationRouter
     
     init(goalAdapter: ApplicationGoalAdapter, workoutAdapter: ApplicationWorkoutAdapter) {
         self.goalAdapter = goalAdapter
@@ -11,21 +12,26 @@ internal struct MainTabView: View {
     }
 
     var body: some View {
-        TabView {
+        @Bindable var router = navigationRouter
+        
+        TabView(selection: $router.selectedTab) {
             DashboardView(goalAdapter: goalAdapter, workoutAdapter: workoutAdapter)
                 .tabItem {
                     Label("Dashboard", systemImage: "chart.bar")
                 }
+                .tag(Tab.dashboard)
 
             BenefitView(goalAdapter: goalAdapter, workoutAdapter: workoutAdapter)
                 .tabItem {
                     Label("Benefit", systemImage: "star.fill")
                 }
+                .tag(Tab.benefit)
 
             ProfileView()
                 .tabItem {
                     Label("Profile", systemImage: "person")
                 }
+                .tag(Tab.profile)
         }
     }
 }
