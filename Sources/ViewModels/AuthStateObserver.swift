@@ -1,20 +1,30 @@
 import SwiftUI
-import AppCore
 import Combine
 
+/// Observes authentication state changes and provides reactive updates to the UI.
+/// Uses Combine to poll the authentication state since the adapter protocol isn't Observable.
 @Observable
 public class AuthStateObserver {
+    /// The authentication adapter being observed
     private let authAdapter: ApplicationAuthAdapter
+    
+    /// Set of cancellables for Combine subscriptions
     private var cancellables = Set<AnyCancellable>()
     
-    public private(set) var isNotAuthenticated: Bool = true
+    /// Indicates whether the user is NOT authenticated.
+    /// This inverse boolean is used for showing/hiding the auth screen.
+    public var isNotAuthenticated: Bool = true
     
+    /// Creates a new AuthStateObserver.
+    /// - Parameter authAdapter: The authentication adapter to observe
     public init(authAdapter: ApplicationAuthAdapter) {
         self.authAdapter = authAdapter
         self.isNotAuthenticated = !authAdapter.isAuthenticated
         startObserving()
     }
     
+    /// Starts observing authentication state changes.
+    /// Uses a timer-based approach to poll the auth state every 0.5 seconds.
     private func startObserving() {
         // Since ApplicationAuthAdapter is a protocol and not Observable,
         // we'll use a timer-based approach but with Combine for better integration

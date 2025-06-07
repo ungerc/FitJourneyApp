@@ -1,5 +1,4 @@
 import SwiftUI
-import AppCore
 
 internal struct ProfileView: View {
     @Environment(\.authAdapter) private var authAdapter: ApplicationAuthAdapter?

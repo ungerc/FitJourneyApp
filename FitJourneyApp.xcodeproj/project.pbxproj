@@ -3,56 +3,70 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1A2B3C4D5E6F7890ABCDEF01 /* FitJourneyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7890ABCDEF02 /* FitJourneyApp.swift */; };
-		AA15B6A82DEF5350002F7E9C /* AppCore in Frameworks */ = {isa = PBXBuildFile; productRef = AA15B6A72DEF5350002F7E9C /* AppCore */; };
-		AA15B6B62DEF57AD002F7E9C /* AddWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA15B6B22DEF57AD002F7E9C /* AddWorkoutView.swift */; };
 		AA15B6B72DEF57AD002F7E9C /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA15B6AA2DEF57AD002F7E9C /* DashboardView.swift */; };
-		AA15B6B82DEF57AD002F7E9C /* GoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA15B6AE2DEF57AD002F7E9C /* GoalsView.swift */; };
-		AA15B6B92DEF57AD002F7E9C /* WorkoutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA15B6B42DEF57AD002F7E9C /* WorkoutsView.swift */; };
-		AA15B6BA2DEF57AD002F7E9C /* AddGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA15B6AC2DEF57AD002F7E9C /* AddGoalView.swift */; };
-		AA15B6BB2DEF57AD002F7E9C /* GoalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA15B6AD2DEF57AD002F7E9C /* GoalDetailView.swift */; };
 		AA15B6BC2DEF57AD002F7E9C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA15B6B02DEF57AD002F7E9C /* ProfileView.swift */; };
-		AA15B6BD2DEF57AD002F7E9C /* WorkoutDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA15B6B32DEF57AD002F7E9C /* WorkoutDetailView.swift */; };
 		AA15B6C02DEF8075002F7E9C /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA15B6BE2DEF8075002F7E9C /* ConfettiView.swift */; };
 		AA6C6E3F2DEE22B800123FBD /* (null) in Sources */ = {isa = PBXBuildFile; };
-		AA6C6E412DEE22B800123FBD /* WorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6C6E422DEE22B800123FBD /* WorkoutViewModel.swift */; };
-		AA6C6E432DEE22B800123FBD /* GoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6C6E442DEE22B800123FBD /* GoalViewModel.swift */; };
 		AA6C6E452DEE22B800123FBD /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6C6E462DEE22B800123FBD /* MainTabView.swift */; };
-		AA6C6E492DEE22B800123FBD /* AppCore in Frameworks */ = {isa = PBXBuildFile; productRef = AA6C6E492DEE22B800123FBE /* AppCore */; };
-		AABA0DCB2DEF4D2B002FB75F /* AppCore in Frameworks */ = {isa = PBXBuildFile; productRef = AABA0DCA2DEF4D2B002FB75F /* AppCore */; };
 		AAEC60AB2DF3A3F80004ACF7 /* AuthStateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC60AA2DF3A3F80004ACF7 /* AuthStateObserver.swift */; };
+		AAF04F442DF4463C00F9BC2B /* ConcreteAdapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF04F3F2DF4463C00F9BC2B /* ConcreteAdapters.swift */; };
+		AAF04F452DF4463C00F9BC2B /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF04F422DF4463C00F9BC2B /* ServiceProvider.swift */; };
+		AAF04F462DF4463C00F9BC2B /* ApplicationAdapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF04F3E2DF4463C00F9BC2B /* ApplicationAdapters.swift */; };
+		AAF04F472DF4463C00F9BC2B /* ApplicationServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF04F412DF4463C00F9BC2B /* ApplicationServiceFactory.swift */; };
+		AAF04F492DF4485C00F9BC2B /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = AAF04F482DF4485C00F9BC2B /* Authentication */; };
+		AAF04F4B2DF4485C00F9BC2B /* FitnessTracker in Frameworks */ = {isa = PBXBuildFile; productRef = AAF04F4A2DF4485C00F9BC2B /* FitnessTracker */; };
+		AAF04F4D2DF4485C00F9BC2B /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = AAF04F4C2DF4485C00F9BC2B /* Networking */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AAF04F562DF4490300F9BC2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1A2B3C4D5E6F7890ABCDEF0B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1A2B3C4D5E6F7890ABCDEF07;
+			remoteInfo = FitJourneyApp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1A2B3C4D5E6F7890ABCDEF00 /* FitJourneyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitJourneyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A2B3C4D5E6F7890ABCDEF02 /* FitJourneyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitJourneyApp.swift; sourceTree = "<group>"; };
 		AA15B6AA2DEF57AD002F7E9C /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
-		AA15B6AC2DEF57AD002F7E9C /* AddGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGoalView.swift; sourceTree = "<group>"; };
-		AA15B6AD2DEF57AD002F7E9C /* GoalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailView.swift; sourceTree = "<group>"; };
-		AA15B6AE2DEF57AD002F7E9C /* GoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsView.swift; sourceTree = "<group>"; };
 		AA15B6B02DEF57AD002F7E9C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		AA15B6B22DEF57AD002F7E9C /* AddWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutView.swift; sourceTree = "<group>"; };
-		AA15B6B32DEF57AD002F7E9C /* WorkoutDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailView.swift; sourceTree = "<group>"; };
-		AA15B6B42DEF57AD002F7E9C /* WorkoutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsView.swift; sourceTree = "<group>"; };
 		AA15B6BE2DEF8075002F7E9C /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
-		AA6C6E422DEE22B800123FBD /* WorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewModel.swift; sourceTree = "<group>"; };
-		AA6C6E442DEE22B800123FBD /* GoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewModel.swift; sourceTree = "<group>"; };
 		AA6C6E462DEE22B800123FBD /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		AAEC60AA2DF3A3F80004ACF7 /* AuthStateObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStateObserver.swift; sourceTree = "<group>"; };
+		AAF04F3E2DF4463C00F9BC2B /* ApplicationAdapters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationAdapters.swift; sourceTree = "<group>"; };
+		AAF04F3F2DF4463C00F9BC2B /* ConcreteAdapters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteAdapters.swift; sourceTree = "<group>"; };
+		AAF04F412DF4463C00F9BC2B /* ApplicationServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationServiceFactory.swift; sourceTree = "<group>"; };
+		AAF04F422DF4463C00F9BC2B /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
+		AAF04F522DF4490300F9BC2B /* FitJourneyAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitJourneyAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		AAF04F532DF4490300F9BC2B /* FitJourneyAppTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); name = FitJourneyAppTests; path = Tests; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		1A2B3C4D5E6F7890ABCDEF03 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA15B6A82DEF5350002F7E9C /* AppCore in Frameworks */,
-				AA6C6E492DEE22B800123FBD /* AppCore in Frameworks */,
-				AABA0DCB2DEF4D2B002FB75F /* AppCore in Frameworks */,
+				AAF04F4D2DF4485C00F9BC2B /* Networking in Frameworks */,
+				AAF04F4B2DF4485C00F9BC2B /* FitnessTracker in Frameworks */,
+				AAF04F492DF4485C00F9BC2B /* Authentication in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAF04F4F2DF4490300F9BC2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				1A2B3C4D5E6F7890ABCDEF00 /* FitJourneyApp.app */,
+				AAF04F522DF4490300F9BC2B /* FitJourneyAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +85,8 @@
 		1A2B3C4D5E6F7890ABCDEF05 /* FitJourneyApp */ = {
 			isa = PBXGroup;
 			children = (
+				AAF04F402DF4463C00F9BC2B /* Adapters */,
+				AAF04F432DF4463C00F9BC2B /* Services */,
 				AA6C6E4A2DEE22B800123FBD /* ViewModels */,
 				AA6C6E4B2DEE22B800123FBD /* Views */,
 				1A2B3C4D5E6F7890ABCDEF02 /* FitJourneyApp.swift */,
@@ -82,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				1A2B3C4D5E6F7890ABCDEF05 /* FitJourneyApp */,
+				AAF04F532DF4490300F9BC2B /* FitJourneyAppTests */,
 				1A2B3C4D5E6F7890ABCDEF04 /* Products */,
 				1A2B3C4D5E6F7890ABCDEF31 /* Frameworks */,
 			);
@@ -102,32 +120,12 @@
 			path = Dashboard;
 			sourceTree = "<group>";
 		};
-		AA15B6AF2DEF57AD002F7E9C /* Goals */ = {
-			isa = PBXGroup;
-			children = (
-				AA15B6AC2DEF57AD002F7E9C /* AddGoalView.swift */,
-				AA15B6AD2DEF57AD002F7E9C /* GoalDetailView.swift */,
-				AA15B6AE2DEF57AD002F7E9C /* GoalsView.swift */,
-			);
-			path = Goals;
-			sourceTree = "<group>";
-		};
 		AA15B6B12DEF57AD002F7E9C /* Profile */ = {
 			isa = PBXGroup;
 			children = (
 				AA15B6B02DEF57AD002F7E9C /* ProfileView.swift */,
 			);
 			path = Profile;
-			sourceTree = "<group>";
-		};
-		AA15B6B52DEF57AD002F7E9C /* Workouts */ = {
-			isa = PBXGroup;
-			children = (
-				AA15B6B22DEF57AD002F7E9C /* AddWorkoutView.swift */,
-				AA15B6B32DEF57AD002F7E9C /* WorkoutDetailView.swift */,
-				AA15B6B42DEF57AD002F7E9C /* WorkoutsView.swift */,
-			);
-			path = Workouts;
 			sourceTree = "<group>";
 		};
 		AA15B6BF2DEF8075002F7E9C /* Shared */ = {
@@ -142,8 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				AAEC60AA2DF3A3F80004ACF7 /* AuthStateObserver.swift */,
-				AA6C6E422DEE22B800123FBD /* WorkoutViewModel.swift */,
-				AA6C6E442DEE22B800123FBD /* GoalViewModel.swift */,
 			);
 			name = ViewModels;
 			path = Sources/ViewModels;
@@ -154,12 +150,28 @@
 			children = (
 				AA15B6BF2DEF8075002F7E9C /* Shared */,
 				AA15B6AB2DEF57AD002F7E9C /* Dashboard */,
-				AA15B6AF2DEF57AD002F7E9C /* Goals */,
 				AA15B6B12DEF57AD002F7E9C /* Profile */,
-				AA15B6B52DEF57AD002F7E9C /* Workouts */,
 				AA6C6E462DEE22B800123FBD /* MainTabView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		AAF04F402DF4463C00F9BC2B /* Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				AAF04F3E2DF4463C00F9BC2B /* ApplicationAdapters.swift */,
+				AAF04F3F2DF4463C00F9BC2B /* ConcreteAdapters.swift */,
+			);
+			path = Adapters;
+			sourceTree = "<group>";
+		};
+		AAF04F432DF4463C00F9BC2B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				AAF04F412DF4463C00F9BC2B /* ApplicationServiceFactory.swift */,
+				AAF04F422DF4463C00F9BC2B /* ServiceProvider.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,10 +194,36 @@
 				AA6C6E492DEE22B800123FBE /* AppCore */,
 				AABA0DCA2DEF4D2B002FB75F /* AppCore */,
 				AA15B6A72DEF5350002F7E9C /* AppCore */,
+				AAF04F482DF4485C00F9BC2B /* Authentication */,
+				AAF04F4A2DF4485C00F9BC2B /* FitnessTracker */,
+				AAF04F4C2DF4485C00F9BC2B /* Networking */,
 			);
 			productName = FitJourneyApp;
 			productReference = 1A2B3C4D5E6F7890ABCDEF00 /* FitJourneyApp.app */;
 			productType = "com.apple.product-type.application";
+		};
+		AAF04F512DF4490300F9BC2B /* FitJourneyAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAF04F582DF4490300F9BC2B /* Build configuration list for PBXNativeTarget "FitJourneyAppTests" */;
+			buildPhases = (
+				AAF04F4E2DF4490300F9BC2B /* Sources */,
+				AAF04F4F2DF4490300F9BC2B /* Frameworks */,
+				AAF04F502DF4490300F9BC2B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AAF04F572DF4490300F9BC2B /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AAF04F532DF4490300F9BC2B /* FitJourneyAppTests */,
+			);
+			name = FitJourneyAppTests;
+			packageProductDependencies = (
+			);
+			productName = FitJourneyAppTests;
+			productReference = AAF04F522DF4490300F9BC2B /* FitJourneyAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -194,11 +232,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
+				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					1A2B3C4D5E6F7890ABCDEF07 = {
 						CreatedOnToolsVersion = 14.3;
+					};
+					AAF04F512DF4490300F9BC2B = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 1A2B3C4D5E6F7890ABCDEF07;
 					};
 				};
 			};
@@ -219,12 +261,20 @@
 			projectRoot = "";
 			targets = (
 				1A2B3C4D5E6F7890ABCDEF07 /* FitJourneyApp */,
+				AAF04F512DF4490300F9BC2B /* FitJourneyAppTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1A2B3C4D5E6F7890ABCDEF0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAF04F502DF4490300F9BC2B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -238,25 +288,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA15B6B62DEF57AD002F7E9C /* AddWorkoutView.swift in Sources */,
 				AA15B6B72DEF57AD002F7E9C /* DashboardView.swift in Sources */,
-				AA15B6B82DEF57AD002F7E9C /* GoalsView.swift in Sources */,
-				AA15B6B92DEF57AD002F7E9C /* WorkoutsView.swift in Sources */,
-				AA15B6BA2DEF57AD002F7E9C /* AddGoalView.swift in Sources */,
-				AA15B6BB2DEF57AD002F7E9C /* GoalDetailView.swift in Sources */,
 				AAEC60AB2DF3A3F80004ACF7 /* AuthStateObserver.swift in Sources */,
 				AA15B6C02DEF8075002F7E9C /* ConfettiView.swift in Sources */,
 				AA15B6BC2DEF57AD002F7E9C /* ProfileView.swift in Sources */,
-				AA15B6BD2DEF57AD002F7E9C /* WorkoutDetailView.swift in Sources */,
 				1A2B3C4D5E6F7890ABCDEF01 /* FitJourneyApp.swift in Sources */,
 				AA6C6E3F2DEE22B800123FBD /* (null) in Sources */,
-				AA6C6E412DEE22B800123FBD /* WorkoutViewModel.swift in Sources */,
-				AA6C6E432DEE22B800123FBD /* GoalViewModel.swift in Sources */,
 				AA6C6E452DEE22B800123FBD /* MainTabView.swift in Sources */,
+				AAF04F442DF4463C00F9BC2B /* ConcreteAdapters.swift in Sources */,
+				AAF04F452DF4463C00F9BC2B /* ServiceProvider.swift in Sources */,
+				AAF04F462DF4463C00F9BC2B /* ApplicationAdapters.swift in Sources */,
+				AAF04F472DF4463C00F9BC2B /* ApplicationServiceFactory.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAF04F4E2DF4490300F9BC2B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AAF04F572DF4490300F9BC2B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1A2B3C4D5E6F7890ABCDEF07 /* FitJourneyApp */;
+			targetProxy = AAF04F562DF4490300F9BC2B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1A2B3C4D5E6F7890ABCDEF0D /* Debug */ = {
@@ -432,6 +493,51 @@
 			};
 			name = Release;
 		};
+		AAF04F592DF4490300F9BC2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cunger.FitJourneyAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FitJourneyApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FitJourneyApp";
+			};
+			name = Debug;
+		};
+		AAF04F5A2DF4490300F9BC2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cunger.FitJourneyAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FitJourneyApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FitJourneyApp";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -449,6 +555,15 @@
 			buildConfigurations = (
 				1A2B3C4D5E6F7890ABCDEF0D /* Debug */,
 				1A2B3C4D5E6F7890ABCDEF0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAF04F582DF4490300F9BC2B /* Build configuration list for PBXNativeTarget "FitJourneyAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAF04F592DF4490300F9BC2B /* Debug */,
+				AAF04F5A2DF4490300F9BC2B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -474,6 +589,21 @@
 		AABA0DCA2DEF4D2B002FB75F /* AppCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppCore;
+		};
+		AAF04F482DF4485C00F9BC2B /* Authentication */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA15B6A62DEF5350002F7E9C /* XCLocalSwiftPackageReference "../SwiftUIApp" */;
+			productName = Authentication;
+		};
+		AAF04F4A2DF4485C00F9BC2B /* FitnessTracker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA15B6A62DEF5350002F7E9C /* XCLocalSwiftPackageReference "../SwiftUIApp" */;
+			productName = FitnessTracker;
+		};
+		AAF04F4C2DF4485C00F9BC2B /* Networking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA15B6A62DEF5350002F7E9C /* XCLocalSwiftPackageReference "../SwiftUIApp" */;
+			productName = Networking;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

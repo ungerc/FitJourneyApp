@@ -2,22 +2,27 @@ import SwiftUI
 
 // Main tab view for the authenticated user
 internal struct MainTabView: View {
-    @Environment(WorkoutViewModel.self) private var workoutViewModel
-    @Environment(GoalViewModel.self) private var goalViewModel
+    private let goalAdapter: ApplicationGoalAdapter
+    private let workoutAdapter: ApplicationWorkoutAdapter
+    
+    init(goalAdapter: ApplicationGoalAdapter, workoutAdapter: ApplicationWorkoutAdapter) {
+        self.goalAdapter = goalAdapter
+        self.workoutAdapter = workoutAdapter
+    }
 
     var body: some View {
         TabView {
-            DashboardView()
+            DashboardView(goalAdapter: goalAdapter, workoutAdapter: workoutAdapter)
                 .tabItem {
                     Label("Dashboard", systemImage: "chart.bar")
                 }
 
-            WorkoutsView()
+            workoutAdapter.makeWorkoutsView()
                 .tabItem {
                     Label("Workouts", systemImage: "figure.run")
                 }
 
-            GoalsView()
+            goalAdapter.makeGoalsView()
                 .tabItem {
                     Label("Goals", systemImage: "target")
                 }
@@ -26,11 +31,6 @@ internal struct MainTabView: View {
                 .tabItem {
                     Label("Profile", systemImage: "person")
                 }
-        }
-        .task {
-            // Load data when tab view appears
-            await workoutViewModel.fetchWorkouts()
-            await goalViewModel.fetchGoals()
         }
     }
 }

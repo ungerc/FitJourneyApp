@@ -1,24 +1,13 @@
-import XCTest
+import Testing
+import SwiftUI
 @testable import FitJourneyApp
-@testable import AppCore
 
-final class AuthStateObserverTests: XCTestCase {
-    var authStateObserver: AuthStateObserver!
-    var mockAuthAdapter: MockAuthAdapter!
+@Suite("AuthStateObserver Tests")
+struct AuthStateObserverTests {
+    let mockAuthAdapter = MockAuthAdapter()
     
-    override func setUp() {
-        super.setUp()
-        mockAuthAdapter = MockAuthAdapter()
-        authStateObserver = AuthStateObserver(authAdapter: mockAuthAdapter)
-    }
-    
-    override func tearDown() {
-        authStateObserver = nil
-        mockAuthAdapter = nil
-        super.tearDown()
-    }
-    
-    func testInitialStateWhenNotAuthenticated() {
+    @Test("Initial state when not authenticated")
+    func initialStateWhenNotAuthenticated() {
         // Given
         mockAuthAdapter.isAuthenticated = false
         
@@ -26,10 +15,11 @@ final class AuthStateObserverTests: XCTestCase {
         let observer = AuthStateObserver(authAdapter: mockAuthAdapter)
         
         // Then
-        XCTAssertTrue(observer.isNotAuthenticated)
+        #expect(observer.isNotAuthenticated)
     }
     
-    func testInitialStateWhenAuthenticated() {
+    @Test("Initial state when authenticated")
+    func initialStateWhenAuthenticated() {
         // Given
         mockAuthAdapter.isAuthenticated = true
         
@@ -37,13 +27,15 @@ final class AuthStateObserverTests: XCTestCase {
         let observer = AuthStateObserver(authAdapter: mockAuthAdapter)
         
         // Then
-        XCTAssertFalse(observer.isNotAuthenticated)
+        #expect(!observer.isNotAuthenticated)
     }
     
-    func testStateUpdatesWhenAuthenticationChanges() async throws {
+    @Test("State updates when authentication changes")
+    func stateUpdatesWhenAuthenticationChanges() async throws {
         // Given
         mockAuthAdapter.isAuthenticated = false
-        XCTAssertTrue(authStateObserver.isNotAuthenticated)
+        let observer = AuthStateObserver(authAdapter: mockAuthAdapter)
+        #expect(observer.isNotAuthenticated)
         
         // When
         mockAuthAdapter.isAuthenticated = true
@@ -52,14 +44,15 @@ final class AuthStateObserverTests: XCTestCase {
         try await Task.sleep(nanoseconds: 600_000_000) // 0.6 seconds
         
         // Then
-        XCTAssertFalse(authStateObserver.isNotAuthenticated)
+        #expect(!observer.isNotAuthenticated)
     }
     
-    func testStateUpdatesWhenLoggingOut() async throws {
+    @Test("State updates when logging out")
+    func stateUpdatesWhenLoggingOut() async throws {
         // Given
         mockAuthAdapter.isAuthenticated = true
         let observer = AuthStateObserver(authAdapter: mockAuthAdapter)
-        XCTAssertFalse(observer.isNotAuthenticated)
+        #expect(!observer.isNotAuthenticated)
         
         // When
         mockAuthAdapter.isAuthenticated = false
@@ -68,7 +61,7 @@ final class AuthStateObserverTests: XCTestCase {
         try await Task.sleep(nanoseconds: 600_000_000) // 0.6 seconds
         
         // Then
-        XCTAssertTrue(observer.isNotAuthenticated)
+        #expect(observer.isNotAuthenticated)
     }
 }
 
