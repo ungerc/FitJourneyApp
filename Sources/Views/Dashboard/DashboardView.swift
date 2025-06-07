@@ -17,20 +17,38 @@ struct DashboardView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     // Summary cards
-                    HStack(spacing: 15) {
-                        SummaryCard(
-                            title: "Workouts",
-                            value: "\(workouts.count)",
-                            icon: "figure.run",
-                            color: .blue
-                        )
+                    VStack(spacing: 15) {
+                        HStack(spacing: 15) {
+                            SummaryCard(
+                                title: "Total Workouts",
+                                value: "\(workouts.count)",
+                                icon: "figure.run",
+                                color: .blue
+                            )
+                            
+                            SummaryCard(
+                                title: "This Week",
+                                value: "\(weeklyWorkoutCount)",
+                                icon: "calendar",
+                                color: .green
+                            )
+                        }
                         
-                        SummaryCard(
-                            title: "Calories",
-                            value: "\(Int(totalCaloriesBurned))",
-                            icon: "flame",
-                            color: .orange
-                        )
+                        HStack(spacing: 15) {
+                            SummaryCard(
+                                title: "Calories Burned",
+                                value: "\(Int(totalCaloriesBurned))",
+                                icon: "flame",
+                                color: .orange
+                            )
+                            
+                            SummaryCard(
+                                title: "Active Goals",
+                                value: "\(inProgressGoals.count)",
+                                icon: "target",
+                                color: .purple
+                            )
+                        }
                     }
                     .padding(.horizontal)
                     
@@ -48,7 +66,7 @@ struct DashboardView: View {
                         } else {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack(spacing: 15) {
-                                    ForEach(workouts.prefix(3)) { workout in
+                                    ForEach(recentWorkouts) { workout in
                                         WorkoutCard(workout: workout)
                                             .frame(width: 250)
                                     }
@@ -103,6 +121,17 @@ struct DashboardView: View {
     
     private var inProgressGoals: [AppGoal] {
         goals.filter { $0.progress < 1.0 }
+    }
+    
+    private var recentWorkouts: [AppWorkout] {
+        // Sort workouts by date (most recent first) and take the first 3
+        workouts.sorted { $0.date > $1.date }.prefix(3).map { $0 }
+    }
+    
+    private var weeklyWorkoutCount: Int {
+        // Count workouts from the last 7 days
+        let oneWeekAgo = Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()
+        return workouts.filter { $0.date >= oneWeekAgo }.count
     }
     
     private func loadData() async {

@@ -21,6 +21,7 @@
 		AAF04F492DF4485C00F9BC2B /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = AAF04F482DF4485C00F9BC2B /* Authentication */; };
 		AAF04F4B2DF4485C00F9BC2B /* FitnessTracker in Frameworks */ = {isa = PBXBuildFile; productRef = AAF04F4A2DF4485C00F9BC2B /* FitnessTracker */; };
 		AAF04F4D2DF4485C00F9BC2B /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = AAF04F4C2DF4485C00F9BC2B /* Networking */; };
+		AAF04F632DF469E300F9BC2B /* BenefitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF04F612DF469E300F9BC2B /* BenefitView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		AAF04F412DF4463C00F9BC2B /* ApplicationServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationServiceFactory.swift; sourceTree = "<group>"; };
 		AAF04F422DF4463C00F9BC2B /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		AAF04F522DF4490300F9BC2B /* FitJourneyAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitJourneyAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAF04F612DF469E300F9BC2B /* BenefitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -148,6 +150,7 @@
 		AA6C6E4B2DEE22B800123FBD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AAF04F622DF469E300F9BC2B /* Benefit */,
 				AA15B6BF2DEF8075002F7E9C /* Shared */,
 				AA15B6AB2DEF57AD002F7E9C /* Dashboard */,
 				AA15B6B12DEF57AD002F7E9C /* Profile */,
@@ -172,6 +175,14 @@
 				AAF04F422DF4463C00F9BC2B /* ServiceProvider.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		AAF04F622DF469E300F9BC2B /* Benefit */ = {
+			isa = PBXGroup;
+			children = (
+				AAF04F612DF469E300F9BC2B /* BenefitView.swift */,
+			);
+			path = Benefit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +303,7 @@
 				AAEC60AB2DF3A3F80004ACF7 /* AuthStateObserver.swift in Sources */,
 				AA15B6C02DEF8075002F7E9C /* ConfettiView.swift in Sources */,
 				AA15B6BC2DEF57AD002F7E9C /* ProfileView.swift in Sources */,
+				AAF04F632DF469E300F9BC2B /* BenefitView.swift in Sources */,
 				1A2B3C4D5E6F7890ABCDEF01 /* FitJourneyApp.swift in Sources */,
 				AA6C6E3F2DEE22B800123FBD /* (null) in Sources */,
 				AA6C6E452DEE22B800123FBD /* MainTabView.swift in Sources */,

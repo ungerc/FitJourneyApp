@@ -17,14 +17,9 @@ internal struct MainTabView: View {
                     Label("Dashboard", systemImage: "chart.bar")
                 }
 
-            workoutAdapter.makeWorkoutsView()
+            BenefitView(goalAdapter: goalAdapter, workoutAdapter: workoutAdapter)
                 .tabItem {
-                    Label("Workouts", systemImage: "figure.run")
-                }
-
-            goalAdapter.makeGoalsView()
-                .tabItem {
-                    Label("Goals", systemImage: "target")
+                    Label("Benefit", systemImage: "star.fill")
                 }
 
             ProfileView()
