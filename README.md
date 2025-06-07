@@ -1,1 +1,1 @@
-[README](FitJourneyApp/blob/main/DependencyGraph.md)
+[README](FitJourneyApp/main/DependencyGraph.md)
