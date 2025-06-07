@@ -55,28 +55,21 @@ struct QuickStatsView: View {
         }
     }
     
+    @MainActor
     private func loadStats() async {
-        await MainActor.run {
-            isLoading = true
-        }
+        isLoading = true
         
         // Fetch workouts
         if let workouts = try? await workoutAdapter.fetchWorkouts() {
-            await MainActor.run {
-                workoutCount = workouts.count
-            }
+            workoutCount = workouts.count
         }
         
         // Fetch goals
         if let goals = try? await goalAdapter.fetchGoals() {
-            await MainActor.run {
-                activeGoalsCount = goals.filter { $0.progress < 1.0 }.count
-                completedGoalsCount = goals.filter { $0.progress >= 1.0 }.count
-            }
+            activeGoalsCount = goals.filter { $0.progress < 1.0 }.count
+            completedGoalsCount = goals.filter { $0.progress >= 1.0 }.count
         }
         
-        await MainActor.run {
-            isLoading = false
-        }
+        isLoading = false
     }
 }

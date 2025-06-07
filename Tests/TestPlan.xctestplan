@@ -1,0 +1,77 @@
+{
+  "configurations" : [
+    {
+      "id" : "E5B5D5A5-1234-4567-8901-123456789ABC",
+      "name" : "Test Scheme Action",
+      "options" : {
+        "targetForVariableExpansion" : {
+          "containerPath" : "container:FitJourneyApp.xcodeproj",
+          "identifier" : "FitJourneyApp",
+          "name" : "FitJourneyApp"
+        }
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:FitJourneyApp.xcodeproj",
+          "identifier" : "FitJourneyApp",
+          "name" : "FitJourneyApp"
+        },
+        {
+          "containerPath" : "container:SwiftUIApp.xcodeproj",
+          "identifier" : "Authentication",
+          "name" : "Authentication"
+        },
+        {
+          "containerPath" : "container:SwiftUIApp.xcodeproj",
+          "identifier" : "FitnessTracker",
+          "name" : "FitnessTracker"
+        },
+        {
+          "containerPath" : "container:SwiftUIApp.xcodeproj",
+          "identifier" : "Networking",
+          "name" : "Networking"
+        }
+      ]
+    },
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:FitJourneyApp.xcodeproj",
+        "identifier" : "FitJourneyAppTests",
+        "name" : "FitJourneyAppTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:SwiftUIApp.xcodeproj",
+        "identifier" : "AuthenticationTests",
+        "name" : "AuthenticationTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:SwiftUIApp.xcodeproj",
+        "identifier" : "FitnessTrackerTests",
+        "name" : "FitnessTrackerTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:SwiftUIApp.xcodeproj",
+        "identifier" : "NetworkingTests",
+        "name" : "NetworkingTests"
+      }
+    }
+  ],
+  "version" : 1
+}
