@@ -15,6 +15,9 @@
 		AA1FA4042DF4AE3800E389A6 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = AA1FA4032DF4AE3800E389A6 /* Networking */; };
 		AA6C6E3F2DEE22B800123FBD /* (null) in Sources */ = {isa = PBXBuildFile; };
 		AA6C6E452DEE22B800123FBD /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6C6E462DEE22B800123FBD /* MainTabView.swift */; };
+		AABD91E52DF4B4AA00D88A39 /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = AABD91E42DF4B4AA00D88A39 /* Authentication */; };
+		AABD91E72DF4B4AA00D88A39 /* Benefit in Frameworks */ = {isa = PBXBuildFile; productRef = AABD91E62DF4B4AA00D88A39 /* Benefit */; };
+		AABD91E92DF4B4AA00D88A39 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = AABD91E82DF4B4AA00D88A39 /* Networking */; };
 		AAEC60AB2DF3A3F80004ACF7 /* AuthStateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC60AA2DF3A3F80004ACF7 /* AuthStateObserver.swift */; };
 		AAF04F442DF4463C00F9BC2B /* ConcreteAdapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF04F3F2DF4463C00F9BC2B /* ConcreteAdapters.swift */; };
 		AAF04F452DF4463C00F9BC2B /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF04F422DF4463C00F9BC2B /* ServiceProvider.swift */; };
@@ -82,8 +85,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AABD91E92DF4B4AA00D88A39 /* Networking in Frameworks */,
 				AA1FA4042DF4AE3800E389A6 /* Networking in Frameworks */,
 				AA1FA4022DF4AE3800E389A6 /* Benefit in Frameworks */,
+				AABD91E72DF4B4AA00D88A39 /* Benefit in Frameworks */,
+				AABD91E52DF4B4AA00D88A39 /* Authentication in Frameworks */,
 				AA1FA4002DF4AE3800E389A6 /* Authentication in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,6 +254,9 @@
 				AA1FA3FF2DF4AE3800E389A6 /* Authentication */,
 				AA1FA4012DF4AE3800E389A6 /* Benefit */,
 				AA1FA4032DF4AE3800E389A6 /* Networking */,
+				AABD91E42DF4B4AA00D88A39 /* Authentication */,
+				AABD91E62DF4B4AA00D88A39 /* Benefit */,
+				AABD91E82DF4B4AA00D88A39 /* Networking */,
 			);
 			productName = FitJourneyApp;
 			productReference = 1A2B3C4D5E6F7890ABCDEF00 /* FitJourneyApp.app */;
@@ -305,7 +314,7 @@
 			);
 			mainGroup = 1A2B3C4D5E6F7890ABCDEF06;
 			packageReferences = (
-				AA1FA3FE2DF4AE3800E389A6 /* XCLocalSwiftPackageReference "../SwiftUIApp" */,
+				AABD91E32DF4B4AA00D88A39 /* XCRemoteSwiftPackageReference "SwiftUIApp" */,
 			);
 			productRefGroup = 1A2B3C4D5E6F7890ABCDEF04 /* Products */;
 			projectDirPath = "";
@@ -633,12 +642,16 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		AA1FA3FE2DF4AE3800E389A6 /* XCLocalSwiftPackageReference "../SwiftUIApp" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../SwiftUIApp;
+/* Begin XCRemoteSwiftPackageReference section */
+		AABD91E32DF4B4AA00D88A39 /* XCRemoteSwiftPackageReference "SwiftUIApp" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ungerc/SwiftUIApp.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
 		};
-/* End XCLocalSwiftPackageReference section */
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		AA1FA3FF2DF4AE3800E389A6 /* Authentication */ = {
@@ -651,6 +664,21 @@
 		};
 		AA1FA4032DF4AE3800E389A6 /* Networking */ = {
 			isa = XCSwiftPackageProductDependency;
+			productName = Networking;
+		};
+		AABD91E42DF4B4AA00D88A39 /* Authentication */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AABD91E32DF4B4AA00D88A39 /* XCRemoteSwiftPackageReference "SwiftUIApp" */;
+			productName = Authentication;
+		};
+		AABD91E62DF4B4AA00D88A39 /* Benefit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AABD91E32DF4B4AA00D88A39 /* XCRemoteSwiftPackageReference "SwiftUIApp" */;
+			productName = Benefit;
+		};
+		AABD91E82DF4B4AA00D88A39 /* Networking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AABD91E32DF4B4AA00D88A39 /* XCRemoteSwiftPackageReference "SwiftUIApp" */;
 			productName = Networking;
 		};
 /* End XCSwiftPackageProductDependency section */
