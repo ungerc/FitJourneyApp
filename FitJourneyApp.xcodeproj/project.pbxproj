@@ -10,6 +10,9 @@
 		1A2B3C4D5E6F7890ABCDEF01 /* FitJourneyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7890ABCDEF02 /* FitJourneyApp.swift */; };
 		AA15B6B72DEF57AD002F7E9C /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA15B6AA2DEF57AD002F7E9C /* DashboardView.swift */; };
 		AA15B6BC2DEF57AD002F7E9C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA15B6B02DEF57AD002F7E9C /* ProfileView.swift */; };
+		AA1FA3BA2DF4A42700E389A6 /* AppCore in Frameworks */ = {isa = PBXBuildFile; productRef = AA6C6E492DEE22B800123FBE /* AppCore */; };
+		AA1FA3BB2DF4A42700E389A6 /* AppCore in Frameworks */ = {isa = PBXBuildFile; productRef = AABA0DCA2DEF4D2B002FB75F /* AppCore */; };
+		AA1FA3BC2DF4A42700E389A6 /* AppCore in Frameworks */ = {isa = PBXBuildFile; productRef = AA15B6A72DEF5350002F7E9C /* AppCore */; };
 		AA6C6E3F2DEE22B800123FBD /* (null) in Sources */ = {isa = PBXBuildFile; };
 		AA6C6E452DEE22B800123FBD /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6C6E462DEE22B800123FBD /* MainTabView.swift */; };
 		AAEC60AB2DF3A3F80004ACF7 /* AuthStateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC60AA2DF3A3F80004ACF7 /* AuthStateObserver.swift */; };
@@ -50,6 +53,7 @@
 		1A2B3C4D5E6F7890ABCDEF02 /* FitJourneyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitJourneyApp.swift; sourceTree = "<group>"; };
 		AA15B6AA2DEF57AD002F7E9C /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		AA15B6B02DEF57AD002F7E9C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		AA1FA3CC2DF4A84B00E389A6 /* DependencyGraph.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DependencyGraph.md; sourceTree = "<group>"; };
 		AA6C6E462DEE22B800123FBD /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		AAEC60AA2DF3A3F80004ACF7 /* AuthStateObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStateObserver.swift; sourceTree = "<group>"; };
 		AAF04F3E2DF4463C00F9BC2B /* ApplicationAdapters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationAdapters.swift; sourceTree = "<group>"; };
@@ -81,6 +85,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA1FA3BC2DF4A42700E389A6 /* AppCore in Frameworks */,
+				AA1FA3BB2DF4A42700E389A6 /* AppCore in Frameworks */,
+				AA1FA3BA2DF4A42700E389A6 /* AppCore in Frameworks */,
 				AAF04F4D2DF4485C00F9BC2B /* Networking in Frameworks */,
 				AAF04F4B2DF4485C00F9BC2B /* FitnessTracker in Frameworks */,
 				AAF04F492DF4485C00F9BC2B /* Authentication in Frameworks */,
@@ -124,6 +131,7 @@
 		1A2B3C4D5E6F7890ABCDEF06 = {
 			isa = PBXGroup;
 			children = (
+				AA1FA3CC2DF4A84B00E389A6 /* DependencyGraph.md */,
 				1A2B3C4D5E6F7890ABCDEF05 /* FitJourneyApp */,
 				AAF04F532DF4490300F9BC2B /* FitJourneyAppTests */,
 				1A2B3C4D5E6F7890ABCDEF04 /* Products */,

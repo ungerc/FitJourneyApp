@@ -1,8 +1,11 @@
 import SwiftUI
 
+/// A celebratory view shown when all goals have been completed.
+/// Displays a trophy icon and encourages users to set new goals.
 struct CompletedGoalsView: View {
     @Environment(NavigationRouter.self) private var navigationRouter
 
+    /// The number of goals that have been completed
     let completedCount: Int
     
     var body: some View {

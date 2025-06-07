@@ -1,13 +1,24 @@
 import SwiftUI
 import FitnessTracker
 
-// Helper view to load a goal if not already in the view model
+/// Helper view that loads a goal detail when it's not already in the view model.
+/// 
+/// This view handles the async loading of goal data and displays:
+/// - A loading indicator while fetching
+/// - The goal detail view once loaded
+/// - An error state if the goal cannot be found
 struct GoalDetailLoader: View {
+    /// The ID of the goal to load
     let goalId: String
+    /// Service for fetching goal data
     let goalService: GoalServiceProtocol
+    /// The goal view model that may already contain the goal
     let goalViewModel: FitnessTracker.GoalViewModel
+    /// The loaded goal, if found
     @State private var goal: FitnessTracker.Goal?
+    /// Loading state flag
     @State private var isLoading = true
+    /// Error encountered during loading, if any
     @State private var error: Error?
     
     var body: some View {

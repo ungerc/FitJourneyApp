@@ -1,13 +1,24 @@
 import SwiftUI
 import FitnessTracker
 
-// Helper view to load a workout if not already in the view model
+/// Helper view that loads a workout detail when it's not already in the view model.
+/// 
+/// This view handles the async loading of workout data and displays:
+/// - A loading indicator while fetching
+/// - The workout detail view once loaded
+/// - An error state if the workout cannot be found
 struct WorkoutDetailLoader: View {
+    /// The ID of the workout to load
     let workoutId: String
+    /// Service for fetching workout data
     let workoutService: WorkoutServiceProtocol
+    /// The workout view model that may already contain the workout
     let workoutViewModel: FitnessTracker.WorkoutViewModel
+    /// The loaded workout, if found
     @State private var workout: FitnessTracker.Workout?
+    /// Loading state flag
     @State private var isLoading = true
+    /// Error encountered during loading, if any
     @State private var error: Error?
     
     var body: some View {

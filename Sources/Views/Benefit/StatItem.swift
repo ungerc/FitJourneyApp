@@ -1,9 +1,15 @@
 import SwiftUI
 
+/// A compact view for displaying a single statistic with an icon.
+/// Used in the QuickStatsView to show workout and goal summaries.
 struct StatItem: View {
+    /// The title/label for the statistic
     let title: String
+    /// The numeric value to display
     let value: String
+    /// SF Symbol name for the icon
     let icon: String
+    /// Color theme for the icon
     let color: Color
     
     var body: some View {

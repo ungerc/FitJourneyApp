@@ -1,6 +1,9 @@
 import SwiftUI
 
+/// A card view that displays goal progress with a visual progress bar.
+/// Shows the goal name, progress percentage, current/target values, and deadline.
 struct GoalProgressCard: View {
+    /// The goal data to display
     let goal: AppGoal
     
     var body: some View {

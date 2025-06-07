@@ -1,6 +1,9 @@
 import SwiftUI
 
+/// A card view that displays workout information in a compact format.
+/// Used in dashboard and list views to show workout summaries.
 struct WorkoutCard: View {
+    /// The workout data to display
     let workout: AppWorkout
 
     var body: some View {

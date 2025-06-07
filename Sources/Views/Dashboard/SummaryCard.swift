@@ -1,9 +1,15 @@
 import SwiftUI
 
+/// A reusable card component for displaying summary statistics.
+/// Used in the dashboard to show key metrics like calories burned, active goals, etc.
 struct SummaryCard: View {
+    /// The title of the metric being displayed
     let title: String
+    /// The value to display prominently
     let value: String
+    /// SF Symbol name for the icon
     let icon: String
+    /// Color theme for the icon
     let color: Color
     
     var body: some View {

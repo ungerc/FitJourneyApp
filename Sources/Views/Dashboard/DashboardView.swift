@@ -1,11 +1,27 @@
 import SwiftUI
 
+/// The main dashboard view showing an overview of user's fitness journey.
+/// 
+/// Displays:
+/// - Summary cards with key metrics
+/// - Recent workouts in a horizontal scroll view
+/// - Goal progress with special handling for completed goals
+/// - Pull-to-refresh functionality
+/// 
+/// This view loads data on appear and supports navigation to workout
+/// and goal details through the NavigationRouter.
 struct DashboardView: View {
+    /// Adapter for fetching and managing goals
     private let goalAdapter: ApplicationGoalAdapter
+    /// Adapter for fetching and managing workouts
     private let workoutAdapter: ApplicationWorkoutAdapter
+    /// Local cache of workouts
     @State private var workouts: [AppWorkout] = []
+    /// Local cache of goals
     @State private var goals: [AppGoal] = []
+    /// Loading state flag
     @State private var isLoading = false
+    /// Router for navigation
     @Environment(NavigationRouter.self) private var navigationRouter
     
     init(goalAdapter: ApplicationGoalAdapter, workoutAdapter: ApplicationWorkoutAdapter) {
