@@ -59,7 +59,7 @@ private struct RootView: View {
     let navigationRouter: NavigationRouter
     let onOpenURL: (URL) -> Void
     
-    @StateObject private var authStateObserver: AuthStateObserver
+    @State private var authStateObserver: AuthStateObserver
     
     init(authAdapter: ApplicationAuthAdapter,
          goalAdapter: ApplicationGoalAdapter,
@@ -71,7 +71,7 @@ private struct RootView: View {
         self.workoutAdapter = workoutAdapter
         self.navigationRouter = navigationRouter
         self.onOpenURL = onOpenURL
-        self._authStateObserver = StateObject(wrappedValue: AuthStateObserver(authAdapter: authAdapter))
+        self._authStateObserver = AuthStateObserver(authAdapter: authAdapter)
     }
     
     var body: some View {

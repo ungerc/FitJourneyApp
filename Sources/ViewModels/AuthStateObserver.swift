@@ -3,6 +3,7 @@ import Combine
 
 /// Observes authentication state changes and provides reactive updates to the UI.
 /// Uses Combine to poll the authentication state since the adapter protocol isn't Observable.
+@MainActor
 @Observable
 public class AuthStateObserver {
     /// The authentication adapter being observed
@@ -17,9 +18,9 @@ public class AuthStateObserver {
     
     /// Creates a new AuthStateObserver.
     /// - Parameter authAdapter: The authentication adapter to observe
-    public init(authAdapter: ApplicationAuthAdapter) {
+    public init(authAdapter: ApplicationAuthAdapter) async {
         self.authAdapter = authAdapter
-        self.isNotAuthenticated = !authAdapter.isAuthenticated
+        self.isNotAuthenticated = await !authAdapter.isAuthenticated
         startObserving()
     }
     
@@ -28,16 +29,16 @@ public class AuthStateObserver {
     private func startObserving() {
         // Since ApplicationAuthAdapter is a protocol and not Observable,
         // we'll use a timer-based approach but with Combine for better integration
-        Timer.publish(every: 0.5, on: .main, in: .common)
-            .autoconnect()
-            .sink { [weak self] _ in
-                guard let self = self else { return }
-                let newValue = !self.authAdapter.isAuthenticated
-                if self.isNotAuthenticated != newValue {
-                    self.isNotAuthenticated = newValue
-                }
-            }
-            .store(in: &cancellables)
+//        Timer.publish(every: 0.5, on: .main, in: .common)
+//            .autoconnect()
+//            .sink { [weak self] _ in
+//                guard let self = self else { return }
+//                let newValue = !self.authAdapter.isAuthenticated
+//                if self.isNotAuthenticated != newValue {
+//                    self.isNotAuthenticated = newValue
+//                }
+//            }
+//            .store(in: &cancellables)
     }
 }
 
