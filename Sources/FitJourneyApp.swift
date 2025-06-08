@@ -59,19 +59,27 @@ private struct RootView: View {
     let navigationRouter: NavigationRouter
     let onOpenURL: (URL) -> Void
     
-    @State private var authStateObserver: AuthStateObserver?
+    @StateObject private var authStateObserver: AuthStateObserver
+    
+    init(authAdapter: ApplicationAuthAdapter,
+         goalAdapter: ApplicationGoalAdapter,
+         workoutAdapter: ApplicationWorkoutAdapter,
+         navigationRouter: NavigationRouter,
+         onOpenURL: @escaping (URL) -> Void) {
+        self.authAdapter = authAdapter
+        self.goalAdapter = goalAdapter
+        self.workoutAdapter = workoutAdapter
+        self.navigationRouter = navigationRouter
+        self.onOpenURL = onOpenURL
+        self._authStateObserver = StateObject(wrappedValue: AuthStateObserver(authAdapter: authAdapter))
+    }
     
     var body: some View {
         ContentView(authAdapter: authAdapter, goalAdapter: goalAdapter, workoutAdapter: workoutAdapter)
-            .environment(authStateObserver ?? AuthStateObserver(authAdapter: authAdapter))
+            .environment(authStateObserver)
             .environment(\.authAdapter, authAdapter)
             .environment(navigationRouter)
             .onOpenURL(perform: onOpenURL)
-            .task {
-                if authStateObserver == nil {
-                    authStateObserver = AuthStateObserver(authAdapter: authAdapter)
-                }
-            }
     }
 }
 
