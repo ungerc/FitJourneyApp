@@ -7,7 +7,7 @@ struct FitJourneyApp: App {
     private let authAdapter: ApplicationAuthAdapter
 
     // Create adapters
-    @State private var authStateObserver: AuthStateObserver
+    @State private var authStateObserver: AuthStateObserver?
     private let goalAdapter: ApplicationGoalAdapter
     private let workoutAdapter: ApplicationWorkoutAdapter
     
@@ -19,17 +19,21 @@ struct FitJourneyApp: App {
         authAdapter = serviceFactory.makeAuthAdapter()
         goalAdapter = serviceFactory.makeGoalAdapter()
         workoutAdapter = serviceFactory.makeWorkoutAdapter()
-        authStateObserver = AuthStateObserver(authAdapter: authAdapter)
     }
 
     var body: some Scene {
         WindowGroup {
             ContentView(authAdapter: authAdapter, goalAdapter: goalAdapter, workoutAdapter: workoutAdapter)
-                .environment(authStateObserver)
+                .environment(authStateObserver ?? AuthStateObserver(authAdapter: authAdapter))
                 .environment(\.authAdapter, authAdapter)
                 .environment(navigationRouter)
                 .onOpenURL { url in
                     handleDeepLink(url)
+                }
+                .onAppear {
+                    if authStateObserver == nil {
+                        authStateObserver = AuthStateObserver(authAdapter: authAdapter)
+                    }
                 }
         }
     }
