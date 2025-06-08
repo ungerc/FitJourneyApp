@@ -2,11 +2,12 @@ import SwiftUI
 
 internal struct ProfileView: View {
     @Environment(\.authAdapter) private var authAdapter: ApplicationAuthAdapter?
+    @State private var user: AppUser?
 
     var body: some View {
         NavigationView {
             List {
-                if let user = authAdapter?.currentUser {
+                if let user = user {
                     Section {
                         HStack {
                             Image(systemName: "person.circle.fill")
@@ -72,6 +73,9 @@ internal struct ProfileView: View {
                 }
             }
             .navigationTitle("Profile")
+        }
+        .task {
+            user = await authAdapter?.currentUser
         }
     }
 }

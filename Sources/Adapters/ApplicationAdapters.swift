@@ -9,10 +9,10 @@ import Benefit
 /// Bridges between the domain authentication services and the UI layer.
 public protocol ApplicationAuthAdapter: AnyObject {
     /// Indicates whether a user is currently authenticated
-    var isAuthenticated: Bool { get }
-    
+    var isAuthenticated: Bool { get async }
+
     /// The currently authenticated user, if any
-    var currentUser: AppUser? { get }
+    var currentUser: AppUser? { get async }
     
     /// Signs in a user with email and password.
     /// - Parameters:
@@ -40,7 +40,7 @@ public protocol ApplicationAuthAdapter: AnyObject {
     /// Retrieves the authentication token.
     /// - Returns: The authentication token
     /// - Throws: Errors if no valid token is available
-    func getToken() throws -> String
+    func getToken() async throws -> String
     
     /// Creates the authentication view for the UI.
     /// - Returns: A type-erased view for authentication

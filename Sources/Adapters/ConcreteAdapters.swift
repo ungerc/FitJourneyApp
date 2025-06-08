@@ -7,23 +7,23 @@ import Benefit
 // MARK: - Concrete Network Adapter
 internal class ConcreteNetworkAdapter: ApplicationNetworkAdapter {
     private let networkService: NetworkServiceProtocol
-    
+
     init(networkService: NetworkServiceProtocol) {
         self.networkService = networkService
     }
-    
+
     func fetch<T: Decodable>(from urlString: String) async throws -> T {
         return try await networkService.fetch(from: urlString)
     }
-    
+
     func post<T: Encodable, U: Decodable>(to urlString: String, body: T) async throws -> U {
         return try await networkService.post(to: urlString, body: body)
     }
-    
+
     func put<T: Encodable, U: Decodable>(to urlString: String, body: T) async throws -> U {
         return try await networkService.put(to: urlString, body: body)
     }
-    
+
     func delete(from urlString: String) async throws {
         try await networkService.delete(from: urlString)
     }
@@ -32,42 +32,50 @@ internal class ConcreteNetworkAdapter: ApplicationNetworkAdapter {
 // MARK: - Concrete Auth Adapter
 internal class ConcreteAuthAdapter: ApplicationAuthAdapter {
     private let authService: AuthServiceProtocol
-    
+
     init(authService: AuthServiceProtocol) {
         self.authService = authService
     }
-    
+
     var isAuthenticated: Bool {
-        return authService.isAuthenticated
+        get async {
+            return await authService.isAuthenticated
+        }
     }
-    
+
     var currentUser: AppUser? {
-        guard let authUser = authService.currentUser else { return nil }
-        return AppUser(authUser: authUser)
+        get async {
+            guard let authUser = await authService.currentUser else {
+                return nil
+            }
+            return AppUser(authUser: authUser)
+        }
     }
-    
+
     @MainActor
     func signIn(email: String, password: String) async throws -> AppUser {
         let credentials = AuthCredentials(email: email, password: password)
         let authUser = try await authService.signIn(with: credentials)
         return AppUser(authUser: authUser)
     }
-    
+
     @MainActor
     func signUp(email: String, password: String, name: String) async throws -> AppUser {
         let credentials = AuthCredentials(email: email, password: password)
         let authUser = try await authService.signUp(with: credentials, name: name)
         return AppUser(authUser: authUser)
     }
-    
+
     func signOut() throws {
-        try authService.signOut()
+        Task {
+            try await authService.signOut()
+        }
     }
-    
-    func getToken() throws -> String {
-        return try authService.getToken()
+
+    func getToken() async throws -> String {
+        return try await authService.getToken()
     }
-    
+
     @MainActor
     func makeAuthView() -> AnyView {
         AnyView(
@@ -81,7 +89,7 @@ internal class ConcreteAuthAdapter: ApplicationAuthAdapter {
 internal class ConcreteWorkoutAdapter: ApplicationWorkoutAdapter {
     private let workoutService: WorkoutServiceProtocol
     private var _workoutViewModel: Benefit.WorkoutViewModel?
-    
+
     init(workoutService: WorkoutServiceProtocol) {
         self.workoutService = workoutService
     }
@@ -94,10 +102,10 @@ internal class ConcreteWorkoutAdapter: ApplicationWorkoutAdapter {
 
     @MainActor
     func addWorkout(name: String,
-                           type: AppWorkoutType,
-                           duration: TimeInterval,
-                           caloriesBurned: Double,
-                           date: Date) async throws -> AppWorkout {
+                    type: AppWorkoutType,
+                    duration: TimeInterval,
+                    caloriesBurned: Double,
+                    date: Date) async throws -> AppWorkout {
 
         // Convert AppWorkoutType to Benefit.WorkoutType
         let fitnessType: Benefit.WorkoutType
@@ -110,7 +118,7 @@ internal class ConcreteWorkoutAdapter: ApplicationWorkoutAdapter {
         case .yoga: fitnessType = .yoga
         case .hiit: fitnessType = .hiit
         }
-        
+
         let workout = Benefit.Workout(
             id: UUID().uuidString, // This will be replaced by the server
             name: name,
@@ -119,7 +127,7 @@ internal class ConcreteWorkoutAdapter: ApplicationWorkoutAdapter {
             date: date,
             type: fitnessType
         )
-        
+
         let result = try await workoutService.addWorkout(workout)
         return AppWorkout(workout: result)
     }
@@ -128,7 +136,7 @@ internal class ConcreteWorkoutAdapter: ApplicationWorkoutAdapter {
     func deleteWorkout(id: String) async throws {
         try await workoutService.deleteWorkout(id: id)
     }
-    
+
     @MainActor
     func makeWorkoutsView() -> AnyView {
         AnyView(
@@ -136,11 +144,11 @@ internal class ConcreteWorkoutAdapter: ApplicationWorkoutAdapter {
                 .environment(makeWorkoutViewModel())
         )
     }
-    
+
     @MainActor
     func makeWorkoutDetailView(for workoutId: String) -> AnyView {
         let viewModel = makeWorkoutViewModel()
-        
+
         // Find the workout in the view model's workouts array
         if let workout = viewModel.workouts.first(where: { $0.id == workoutId }) {
             return AnyView(
@@ -153,7 +161,7 @@ internal class ConcreteWorkoutAdapter: ApplicationWorkoutAdapter {
             )
         }
     }
-    
+
     @MainActor
     func makeWorkoutViewModel() -> Benefit.WorkoutViewModel {
         if _workoutViewModel == nil {
@@ -168,7 +176,7 @@ internal class ConcreteWorkoutAdapter: ApplicationWorkoutAdapter {
 internal class ConcreteGoalAdapter: ApplicationGoalAdapter {
     private let goalService: GoalServiceProtocol
     private var _goalViewModel: Benefit.GoalViewModel?
-    
+
     init(goalService: GoalServiceProtocol) {
         self.goalService = goalService
     }
@@ -190,7 +198,7 @@ internal class ConcreteGoalAdapter: ApplicationGoalAdapter {
         case .distance: fitnessType = .distance
         case .calories: fitnessType = .calories
         }
-        
+
         let goal = Benefit.Goal(
             id: UUID().uuidString, // This will be replaced by the server
             name: name,
@@ -200,7 +208,7 @@ internal class ConcreteGoalAdapter: ApplicationGoalAdapter {
             deadline: deadline,
             type: fitnessType
         )
-        
+
         let result = try await goalService.addGoal(goal)
         return AppGoal(goal: result)
     }
@@ -215,7 +223,7 @@ internal class ConcreteGoalAdapter: ApplicationGoalAdapter {
     func deleteGoal(id: String) async throws {
         try await goalService.deleteGoal(id: id)
     }
-    
+
     @MainActor
     func makeGoalsView() -> AnyView {
         AnyView(
@@ -223,11 +231,11 @@ internal class ConcreteGoalAdapter: ApplicationGoalAdapter {
                 .environment(makeGoalViewModel())
         )
     }
-    
+
     @MainActor
     func makeGoalDetailView(for goalId: String) -> AnyView {
         let viewModel = makeGoalViewModel()
-        
+
         // Find the goal in the view model's goals array
         if let goal = viewModel.goals.first(where: { $0.id == goalId }) {
             return AnyView(
@@ -241,7 +249,7 @@ internal class ConcreteGoalAdapter: ApplicationGoalAdapter {
             )
         }
     }
-    
+
     @MainActor
     func makeAddGoalView() -> AnyView {
         AnyView(
@@ -249,7 +257,7 @@ internal class ConcreteGoalAdapter: ApplicationGoalAdapter {
                 .environment(makeGoalViewModel())
         )
     }
-    
+
     @MainActor
     func makeGoalViewModel() -> Benefit.GoalViewModel {
         if _goalViewModel == nil {

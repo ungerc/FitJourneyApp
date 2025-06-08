@@ -18,10 +18,19 @@ public class AuthStateObserver {
     
     /// Creates a new AuthStateObserver.
     /// - Parameter authAdapter: The authentication adapter to observe
-    public init(authAdapter: ApplicationAuthAdapter) async {
+    public init(authAdapter: ApplicationAuthAdapter) {
         self.authAdapter = authAdapter
+        // Start with true, will be updated in checkAuthState()
+        self.isNotAuthenticated = true
+        Task {
+            await checkAuthState()
+            startObserving()
+        }
+    }
+    
+    /// Checks the current authentication state
+    private func checkAuthState() async {
         self.isNotAuthenticated = await !authAdapter.isAuthenticated
-        startObserving()
     }
     
     /// Starts observing authentication state changes.
@@ -29,16 +38,15 @@ public class AuthStateObserver {
     private func startObserving() {
         // Since ApplicationAuthAdapter is a protocol and not Observable,
         // we'll use a timer-based approach but with Combine for better integration
-//        Timer.publish(every: 0.5, on: .main, in: .common)
-//            .autoconnect()
-//            .sink { [weak self] _ in
-//                guard let self = self else { return }
-//                let newValue = !self.authAdapter.isAuthenticated
-//                if self.isNotAuthenticated != newValue {
-//                    self.isNotAuthenticated = newValue
-//                }
-//            }
-//            .store(in: &cancellables)
+        Timer.publish(every: 0.5, on: .main, in: .common)
+            .autoconnect()
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                Task {
+                    await self.checkAuthState()
+                }
+            }
+            .store(in: &cancellables)
     }
 }
 
