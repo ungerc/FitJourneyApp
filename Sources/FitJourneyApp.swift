@@ -66,7 +66,7 @@ private struct RootView: View {
             .environment(authStateObserver ?? AuthStateObserver(authAdapter: authAdapter))
             .environment(\.authAdapter, authAdapter)
             .environment(navigationRouter)
-            .onOpenURL(onOpenURL)
+            .onOpenURL(perform: onOpenURL)
             .task {
                 if authStateObserver == nil {
                     authStateObserver = AuthStateObserver(authAdapter: authAdapter)
