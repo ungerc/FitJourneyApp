@@ -12,11 +12,6 @@ struct FitJourneyApp: App {
     
     // Navigation router
     @State private var navigationRouter = NavigationRouter()
-    
-    // Lazy initialization of authStateObserver
-    private var authStateObserver: AuthStateObserver {
-        AuthStateObserver(authAdapter: authAdapter)
-    }
 
     init() {
         serviceFactory = ApplicationServiceFactory()
@@ -27,13 +22,13 @@ struct FitJourneyApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView(authAdapter: authAdapter, goalAdapter: goalAdapter, workoutAdapter: workoutAdapter)
-                .environment(authStateObserver)
-                .environment(\.authAdapter, authAdapter)
-                .environment(navigationRouter)
-                .onOpenURL { url in
-                    handleDeepLink(url)
-                }
+            RootView(
+                authAdapter: authAdapter,
+                goalAdapter: goalAdapter,
+                workoutAdapter: workoutAdapter,
+                navigationRouter: navigationRouter,
+                onOpenURL: handleDeepLink
+            )
         }
     }
     
@@ -53,6 +48,30 @@ struct FitJourneyApp: App {
         default:
             break
         }
+    }
+}
+
+// Helper view to properly initialize AuthStateObserver
+private struct RootView: View {
+    let authAdapter: ApplicationAuthAdapter
+    let goalAdapter: ApplicationGoalAdapter
+    let workoutAdapter: ApplicationWorkoutAdapter
+    let navigationRouter: NavigationRouter
+    let onOpenURL: (URL) -> Void
+    
+    @State private var authStateObserver: AuthStateObserver?
+    
+    var body: some View {
+        ContentView(authAdapter: authAdapter, goalAdapter: goalAdapter, workoutAdapter: workoutAdapter)
+            .environment(authStateObserver ?? AuthStateObserver(authAdapter: authAdapter))
+            .environment(\.authAdapter, authAdapter)
+            .environment(navigationRouter)
+            .onOpenURL(onOpenURL)
+            .task {
+                if authStateObserver == nil {
+                    authStateObserver = AuthStateObserver(authAdapter: authAdapter)
+                }
+            }
     }
 }
 
