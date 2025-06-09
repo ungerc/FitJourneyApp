@@ -245,7 +245,8 @@ internal class ConcreteGoalAdapter: ApplicationGoalAdapter {
         } else {
             // Return a loading view that will fetch the goal
             return AnyView(
-                GoalDetailLoader(goalId: goalId, goalService: goalService, goalViewModel: viewModel)
+                Benefit.GoalDetailLoader(goalId: goalId)
+                    .environment(viewModel)
             )
         }
     }

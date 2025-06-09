@@ -34,7 +34,6 @@
 		AAF04F852DF497ED00F9BC2B /* QuickStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF04F832DF497ED00F9BC2B /* QuickStatsView.swift */; };
 		AAF04F862DF497ED00F9BC2B /* StatItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF04F842DF497ED00F9BC2B /* StatItem.swift */; };
 		AAF04F892DF4980300F9BC2B /* WorkoutDetailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF04F882DF4980300F9BC2B /* WorkoutDetailLoader.swift */; };
-		AAF04F8A2DF4980300F9BC2B /* GoalDetailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF04F872DF4980300F9BC2B /* GoalDetailLoader.swift */; };
 		AAF04F8C2DF4982D00F9BC2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF04F8B2DF4982D00F9BC2B /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,7 +70,6 @@
 		AAF04F7D2DF497E100F9BC2B /* WorkoutCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCard.swift; sourceTree = "<group>"; };
 		AAF04F832DF497ED00F9BC2B /* QuickStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickStatsView.swift; sourceTree = "<group>"; };
 		AAF04F842DF497ED00F9BC2B /* StatItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatItem.swift; sourceTree = "<group>"; };
-		AAF04F872DF4980300F9BC2B /* GoalDetailLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailLoader.swift; sourceTree = "<group>"; };
 		AAF04F882DF4980300F9BC2B /* WorkoutDetailLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailLoader.swift; sourceTree = "<group>"; };
 		AAF04F8B2DF4982D00F9BC2B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,7 +189,6 @@
 		AAF04F402DF4463C00F9BC2B /* Adapters */ = {
 			isa = PBXGroup;
 			children = (
-				AAF04F872DF4980300F9BC2B /* GoalDetailLoader.swift */,
 				AAF04F882DF4980300F9BC2B /* WorkoutDetailLoader.swift */,
 				AAF04F3E2DF4463C00F9BC2B /* ApplicationAdapters.swift */,
 				AAF04F3F2DF4463C00F9BC2B /* ConcreteAdapters.swift */,
@@ -370,7 +367,6 @@
 				AAF04F462DF4463C00F9BC2B /* ApplicationAdapters.swift in Sources */,
 				AAF04F472DF4463C00F9BC2B /* ApplicationServiceFactory.swift in Sources */,
 				AAF04F892DF4980300F9BC2B /* WorkoutDetailLoader.swift in Sources */,
-				AAF04F8A2DF4980300F9BC2B /* GoalDetailLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
