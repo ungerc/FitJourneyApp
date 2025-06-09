@@ -7,6 +7,7 @@ struct AuthStateObserverTests {
     let mockAuthAdapter = MockAuthAdapter()
     
     @Test("Initial state when not authenticated")
+    @MainActor
     func initialStateWhenNotAuthenticated() {
         // Given
         mockAuthAdapter.isAuthenticated = false
@@ -19,18 +20,21 @@ struct AuthStateObserverTests {
     }
     
     @Test("Initial state when authenticated")
-    func initialStateWhenAuthenticated() {
+    @MainActor
+    func initialStateWhenAuthenticated() async throws {
         // Given
         mockAuthAdapter.isAuthenticated = true
-        
+
         // When
         let observer = AuthStateObserver(authAdapter: mockAuthAdapter)
-        
+        try await Task.sleep(nanoseconds: 100_000_000) // 0.1 seconds
+
         // Then
         #expect(!observer.isNotAuthenticated)
     }
     
     @Test("State updates when authentication changes")
+    @MainActor
     func stateUpdatesWhenAuthenticationChanges() async throws {
         // Given
         mockAuthAdapter.isAuthenticated = false
@@ -48,12 +52,15 @@ struct AuthStateObserverTests {
     }
     
     @Test("State updates when logging out")
+    @MainActor
     func stateUpdatesWhenLoggingOut() async throws {
         // Given
         mockAuthAdapter.isAuthenticated = true
         let observer = AuthStateObserver(authAdapter: mockAuthAdapter)
+        try await Task.sleep(nanoseconds: 100_000_000) // 0.1 seconds
+
         #expect(!observer.isNotAuthenticated)
-        
+
         // When
         mockAuthAdapter.isAuthenticated = false
         

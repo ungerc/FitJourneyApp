@@ -21,7 +21,6 @@ public class AuthStateObserver {
     public init(authAdapter: ApplicationAuthAdapter) {
         self.authAdapter = authAdapter
         // Start with true, will be updated in checkAuthState()
-        self.isNotAuthenticated = true
         Task {
             await checkAuthState()
             startObserving()

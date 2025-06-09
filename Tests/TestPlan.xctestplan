@@ -44,32 +44,8 @@
       "parallelizable" : true,
       "target" : {
         "containerPath" : "container:FitJourneyApp.xcodeproj",
-        "identifier" : "FitJourneyAppTests",
+        "identifier" : "AAF04F512DF4490300F9BC2B",
         "name" : "FitJourneyAppTests"
-      }
-    },
-    {
-      "parallelizable" : true,
-      "target" : {
-        "containerPath" : "container:SwiftUIApp.xcodeproj",
-        "identifier" : "AuthenticationTests",
-        "name" : "AuthenticationTests"
-      }
-    },
-    {
-      "parallelizable" : true,
-      "target" : {
-        "containerPath" : "container:SwiftUIApp.xcodeproj",
-        "identifier" : "FitnessTrackerTests",
-        "name" : "FitnessTrackerTests"
-      }
-    },
-    {
-      "parallelizable" : true,
-      "target" : {
-        "containerPath" : "container:SwiftUIApp.xcodeproj",
-        "identifier" : "NetworkingTests",
-        "name" : "NetworkingTests"
       }
     }
   ],
